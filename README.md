@@ -1,1 +1,1 @@
-# FusionReactOS
+The programs are made for opencomputers, the client.lua  and the installer.lua work only in lua, however when the installer is done you has a programmed eeprom that you need to put inside a computer, and connect the reactor and the redstone i/o block or put in a card.
