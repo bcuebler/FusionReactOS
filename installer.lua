@@ -205,7 +205,7 @@ repeat
   .. "Second reactor fuel: " .. reactor.getSecondFusionFuel() .. "\n"
   .. "Reactor direct state: " .. tostring(reactor.isProcessing()) .. "\n"
   .. "Reactor state: " .. mod .. "\n"
-  .. "Reactor efficiency: " .. reactor.getEfficiency()
+  .. "Reactor efficiency: " .. reactor.getEfficiency() .. "%"
  if( modm == 1 ) then
   modem.broadcast(port, message)
  end
