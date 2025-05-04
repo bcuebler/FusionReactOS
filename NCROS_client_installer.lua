@@ -1,5 +1,31 @@
-script [==[
+ component = require("component")
+ computer = require("computer")
+ term = require("term")
+ eeprom = component.eeprom
+ computer.beep()
+ term.clear()
+print("FusionReactOS client Setup V1.0")
+print(" ")
+print("Insert an EEPROM to be written THEN continue")
+print(" ")
+print("Modem port?")
+ modm = tonumber(io.read())
+term.clear()
+print("FusionReactOS client Setup V1.0")
+print(" ")
+print("Set EEPROM as read only? [Y/n]")
+ wrp = string.lower(tostring(io.read()))
+  if( wrp == "y" ) then
+  wrp = 1
+ else
+  wrp = 0
+ end
+term.clear()
+print("FusionReactOS client Setup V1.0")
+print(" ")
 
+--Main script
+script [==[
 local gpu = component.proxy(component.list("gpu")())
 local screen = component.proxy(component.list("screen")())
 local modem = component.proxy(component.list("modem")())
@@ -26,3 +52,12 @@ while true do
 end
 ]==]
 
+print("Writing FusionReactOS client to EEPROM...")
+eeprom.set(script)
+eeprom.setLabel("FusionReactOS client")
+if ( wrp == 1 ) then
+ eeprom.makeReadonly("fros")
+end
+print("EEPROM succesfully written!")
+os.sleep(3)
+term.clear()
