@@ -7,3 +7,7 @@ Here is the link for the Reactor controller server installer:
 And for the client:
 [client]
 	(wget -f https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/NCROS_client.lua /bin/NCROS_client.lua)
+
+Client installer for eeprom based systems:
+[client_installer]
+	(wget -f "https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/NCROS_client_installer.lua" /bin/NCROS_client_installer.lua)
