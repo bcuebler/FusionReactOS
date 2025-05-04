@@ -1,4 +1,10 @@
- component = require("component")
+--requirements:
+--Writable eeprom(installer)
+--network card/ wireless card
+--gpu tier 1 minimum
+--tier 1 screen minimum
+
+component = require("component")
  computer = require("computer")
  term = require("term")
  eeprom = component.eeprom
