@@ -25,7 +25,8 @@ print("FusionReactOS client Setup V1.0")
 print(" ")
 
 --Main script
-script [==[
+script = [==[
+ port = ]==] .. port .. [==[
 local gpu = component.proxy(component.list("gpu")())
 local screen = component.proxy(component.list("screen")())
 local modem = component.proxy(component.list("modem")())
@@ -35,7 +36,7 @@ gpu.setResolution(50, 10)
 --gpu.setForeground(0xFFFFFF)
 --gpu.setBackground(0x000000)
 
-modem.open(port)
+modem.open(tonumber(port))
 
 while true do
   local sig, _, _, _, _, msg = computer.pullSignal("modem_message")
