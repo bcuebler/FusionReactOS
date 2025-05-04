@@ -14,6 +14,9 @@ modem.open(port)
  component.invoke(gpu, "fill", 1, 1, 50, 16, " ")
 while true do
  local _, _, _, _, _, message = event.pull("modem_message")
- component.invoke(gpu, "fill", 1, 1, 50, 16, " ")
- component.invoke(gpu, "set", 1, 1, tostring(message))
+  component.invoke(gpu, "fill", 1, 1, 50, 16, " ")
+ for line in string.gmatch(message, "([^\n]+)") do
+  component.invoke(gpu, "set", x, y, line)
+  y = y + 1
+ end
 end
