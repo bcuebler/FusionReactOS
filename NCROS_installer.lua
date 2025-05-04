@@ -137,8 +137,8 @@ if( scrn == 1 ) then
  screen = component.list("screen")()
  component.invoke(gpu, "bind", screen)
 -- maxX, maxY = component.invoke(gpu, "maxResolution")
- component.invoke(gpu, "setResolution", 50, 16)
- component.invoke(gpu, "fill", 1, 1, 50, 16, " ")
+ component.invoke(gpu, "setResolution", 50, 10)
+ component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
  component.invoke(gpu, "set", 1, 1, "Starting")
 end
  
@@ -210,7 +210,7 @@ repeat
   modem.broadcast(port, message)
  end
  if( scrn == 1 ) then
- component.invoke(gpu, "fill", 1, 1, 50, 16, " ")
+ component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
  for line in string.gmatch(message, "([^\n]+)") do
   component.invoke(gpu, "set", x, y, line)
   y = y + 1
