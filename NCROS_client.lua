@@ -1,3 +1,11 @@
+--requirements:
+--OpenOS
+--network card/ wireless card
+--gpu tier 1 minimum
+--tier 1 screen minimum
+--tier 1 ram or more
+--tier 1 cpu/apu or more
+
 local component = require("component")
 local event = require("event")
 local term = require("term")
