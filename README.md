@@ -1,4 +1,4 @@
-The programs are made for opencomputers, the client.lua  and the installer.lua work only in lua, however when the installer is done you has a programmed eeprom that you need to put inside a computer, and connect the reactor and the redstone i/o block or put in a card.
+TThe client.lua and its installer and the server only work in lua (OpenOS), when any installer is finished you can take out the eeprom and put it in a tier 1 or stronger machine, (none of them work with microcontrollers!) and if you turn it on the program will work immediately. The program is made for nuclearcraft reactors! (You need to copi the entire link into the shell, and the installer will install the program into your eeprom execpt the client, that still uses OpenOS)
 
 Here is the link for the Reactor controller server installer:
 ```
@@ -9,7 +9,7 @@ And for the client:
 ```
 wget -f https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/NCROS_client.lua /bin/NCROS_client.lua
 ```
-Client installer for eeprom based systems:
+And for the client installer for eeprom based systems:
 ```
 wget -f https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/NCROS_client_installer.lua /bin/NCROS_client_installer.lua
 ```
