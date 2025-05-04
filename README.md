@@ -10,4 +10,4 @@ And for the client:
 
 Client installer for eeprom based systems:
 [client_installer]
-	(wget -f "https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/NCROS_client_installer.lua" /bin/NCROS_client_installer.lua)
+	(wget -f https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/NCROS_client_installer.lua /bin/NCROS_client_installer.lua)
