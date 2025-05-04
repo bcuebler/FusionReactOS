@@ -1,10 +1,10 @@
 --requirements:
+--Writable eeprom(installer)
 --Redstone I/O block/card tier 1/2 (only one!)
 --Modem or wireless modem(if enabled in setup)
 --tier 1 gpu, and screen or more(if enabled in setup)
 --tier 1 ram or more
 --tier 1 cpu/apu or more
---writable eeprom
 --NuclearCraft Fusion reactor
  
  
