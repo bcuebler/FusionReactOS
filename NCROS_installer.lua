@@ -158,7 +158,8 @@ end
  a = 0
  b = 0
  rs.setOutput(pwro, 0)
- 
+ eff = 0 
+
 function electromagnetsPowered()
    problem = reactor.getProblem()
   return problem == "E-magnets not Powered"
@@ -180,7 +181,7 @@ end
  rs.setOutput(sideal, 0)
 mod = "Starting"
  
-repeat
+while true do
  if ( rs.getInput(side) < 1) or ( electromagnetsPowered() ) then
   rs.setOutput(outside, 15)
   repeat
@@ -188,25 +189,29 @@ repeat
    sleep(1)
   until ( false == electromagnetsPowered() )
  else
-  if ( reactor.getTemperature() > 550000000 ) then
+  if ( eff > 0.9999 ) then
    rs.setOutput(outside, 0)
+  else
+   rs.setOutput(outside, 15)
   end
  end
  
+ maxtemp = reactor.getMaxTemperature()
+
  delaly = delaly + 1
  if( delaly > dt ) then
   local x = 1
   local y = 1
   local message = "Temperature: " .. temp .. " K\n"
-  .. "Reactor problem: " .. reactor.getProblem() .. "\n"
-  .. "Reactor stored energy: " .. reactor.getEnergyStored() .. "\n"
-  .. "Reactor power: " .. reactor.getReactorProcessPower() .. "\n"
+  .. "Problem: " .. reactor.getProblem() .. "\n"
+  .. "Stored energy: " .. reactor.getEnergyStored() .. " RF" .. "\n"
   .. "First reactor fuel: " .. reactor.getFirstFusionFuel() .."\n"
   .. "Second reactor fuel: " .. reactor.getSecondFusionFuel() .. "\n"
-  .. "Reactor direct state: " .. tostring(reactor.isProcessing()) .. "\n"
-  .. "Reactor state: " .. mod .. "\n"
-  .. "Reactor efficiency: " .. reactor.getEfficiency() .. "%" .. "\n"
-  .. "Reactor optimal temperature: " .. reactor.getOptimalTemp() .. " K"
+  .. "Energy change: " .. reactor.getEnergyChange() .. " RF/t" .. "\n"
+  .. "State: " .. mod .. "\n"
+  .. "Efficiency: " .. eff .. " %" .. "\n"
+  .. "Max temperature: " .. maxtemp .. " K" .. "\n"
+  .. "Max energy stored: " .. reactor.getMaxEnergyStored() .. " RF"
  if( modm == 1 ) then
   modem.broadcast(port, message)
  end
@@ -242,13 +247,9 @@ end
  end
  
 temp = reactor.getTemperature()
- if ( temp > 500000000 ) and ( switch == false ) then
+ if ( eff > 1 ) and ( switch == false ) then
   preheat = 0
- end
- if ( temp < 499999999 ) and ( switch == false ) then
-  preheat = 1
- end
- if ( switch == true ) then
+ else
   preheat = 1
  end
  
@@ -262,7 +263,7 @@ temp = reactor.getTemperature()
   end
  end
  
- if ( temp > 5000000000 ) or ( electromagnetsPowered() ) then
+ if ( temp > maxtemp ) or ( electromagnetsPowered() ) then
   alert = true
  end
  
@@ -279,22 +280,23 @@ temp = reactor.getTemperature()
   end
  end
  
- if ( temp > 2500000000 ) and ( switch == true ) and ( rs.getInput(offside) > 0) then
+ eff = reactor.getEfficiency()
+
+ if ( eff > 90 ) and ( switch == true ) and ( rs.getInput(offside) > 0) then
   rs.setOutput(pwro, 15)
  else
   rs.setOutput(pwro, 0)
  end
  
- if ( temp > 4430000000 ) and ( switch == true ) then
+ if ( eff > 99.999  ) and ( switch == true ) then
   enable = 0
- end
- if ( temp < 4429999999 ) and ( switch == true ) then
+ else
   enable = 1
  end
  if ( switch == false ) then
   enable = 1
  end
-until ( 1 == 0 )
+end
 ]==]
  
 print("Writing FusionReactOS to EEPROM...")
