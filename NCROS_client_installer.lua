@@ -29,7 +29,7 @@ if( inst == 1 ) then
  print("Insert an EEPROM to be written THEN continue")
  print(" ")
 else
- Print("Installation path and name?")
+ print("Installation path and name?")
  path = tostring(io.read())
 end
 print("Predefined modem port? [Y/n]")
