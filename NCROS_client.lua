@@ -11,6 +11,9 @@ local gpu = component.proxy(component.list("gpu")())
 local screen = component.proxy(component.list("screen")())
 local modem = component.proxy(component.list("modem")())
 local event = require("event")
+local keyboard = component.proxy(component.list("keyboard")())
+
+local input = ""
 
 gpu.bind(screen.address)
 gpu.setResolution(50, 10)
@@ -21,7 +24,25 @@ gpu.fill(1, 1, 50, 10, " ")
 
 gpu.set(1, 1, "Modem port?")
 
-port = io.read()
+while true do
+  local signalType, _, char, code = event.pull()
+
+  if signalType == "key_down" then
+    local c = string.char(char)
+    
+    if c:match("%d") then
+      input = input .. c
+      gpu.set(1, 2, input)
+    elseif char == 13 then
+      break
+    elseif char == 8 then
+      input = input:sub(1, -2)
+      gpu.set(1, 2, input .. " ")
+    end
+  end
+end
+
+port = tonumber(input)
 
 modem.open(tonumber(port))
 
