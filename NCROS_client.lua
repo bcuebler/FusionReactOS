@@ -29,17 +29,17 @@ modem.open(tonumber(port))
 gpu.fill(1, 1, 50, 10, " ")
 
 local sig, _, _, _, _, msg = event.pull("modem_message")
-lines = tonumber(msg:gsub("\n", ""))
-gpu.setResolution(50, lines)
+local _, count = msg:gsub("\n", "")
+gpu.setResolution(50, count)
 
 while true do
   local sig, _, _, _, _, msg = event.pull("modem_message")
   if msg then
-    gpu.fill(1, 1, 50, lines, " ")
+    gpu.fill(1, 1, 50, count, " ")
 
     local i = 1
     for line in tostring(msg):gmatch("([^\n]*)\n?") do
-      if i > lines then break end
+      if i > count then break end
       gpu.set(1, i, line:sub(1, 50))
       i = i + 1
     end
