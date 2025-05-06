@@ -12,14 +12,14 @@ component = require("component")
  eeprom = component.eeprom
  computer.beep()
  term.clear()
-print("FusionReactOS client Setup V1.0")
+print("MultiReactOS client Setup V1.0")
 print(" ")
 print("Insert an EEPROM to be written THEN continue")
 print(" ")
 print("Modem port?")
  port = tonumber(io.read())
 term.clear()
-print("FusionReactOS client Setup V1.0")
+print("MultiReactOS client Setup V1.0")
 print(" ")
 print("Set EEPROM as read only? [Y/n]")
  wrp = string.lower(tostring(io.read()))
@@ -29,7 +29,7 @@ print("Set EEPROM as read only? [Y/n]")
   wrp = 0
  end
 term.clear()
-print("FusionReactOS client Setup V1.0")
+print("MultiReactOS client Setup V1.0")
 print(" ")
 
 --Main script
@@ -65,9 +65,9 @@ while true do
 end
 ]==]
 
-print("Writing FusionReactOS client to EEPROM...")
+print("Writing MultiReactOS client to EEPROM...")
 eeprom.set(script)
-eeprom.setLabel("FusionReactOS client")
+eeprom.setLabel("MultiReactOS client")
 if ( wrp == 1 ) then
  eeprom.makeReadonly("fros")
 end
