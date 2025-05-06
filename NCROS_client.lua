@@ -17,8 +17,6 @@ local input = ""
 
 gpu.bind(screen.address)
 gpu.setResolution(50, 10)
---gpu.setForeground(0xFFFFFF)
---gpu.setBackground(0x000000)
 
 gpu.fill(1, 1, 50, 10, " ")
 
