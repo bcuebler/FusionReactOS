@@ -15,7 +15,7 @@ fs = require("filesystem")
  term.clear()
 print("MultiReactOS client Setup V1.0")
 print(" ")
-print("Install into EEPROM or Disk? [E/D]
+print("Install into EEPROM or Disk? [E/D]")
   inst = string.lower(tostring(io.read()))
   if( inst == "E" ) then
   inst = 1
