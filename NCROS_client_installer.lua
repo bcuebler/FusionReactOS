@@ -8,14 +8,30 @@
 
 component = require("component")
  computer = require("computer")
+fs = require("filesystem")
  term = require("term")
  eeprom = component.eeprom
  computer.beep()
  term.clear()
 print("MultiReactOS client Setup V1.0")
 print(" ")
-print("Insert an EEPROM to be written THEN continue")
+print("Install into EEPROM or Disk? [E/D]
+  inst = string.lower(tostring(io.read()))
+  if( inst == "E" ) then
+  inst = 1
+ else
+  inst = 0
+ end
+ term.clear()
+print("MultiReactOS client Setup V1.0")
 print(" ")
+if( inst == 1 ) then
+ print("Insert an EEPROM to be written THEN continue")
+ print(" ")
+else
+ Print("Installation path and name?")
+ path = tostring(io.read())
+end
 print("Predefined modem port? [Y/n]")
  pport = string.lower(tostring(io.read()))
   if( pport == "y" ) then
@@ -30,15 +46,17 @@ if( pport == 1 ) then
  print("Modem port?")
  port = tonumber(io.read())
 end
-term.clear()
-print("MultiReactOS client Setup V1.0")
-print(" ")
-print("Set EEPROM as read only? [Y/n]")
- wrp = string.lower(tostring(io.read()))
-  if( wrp == "y" ) then
-  wrp = 1
- else
-  wrp = 0
+if( inst == 1 ) then
+ term.clear()
+ print("MultiReactOS client Setup V1.0")
+ print(" ")
+ print("Set EEPROM as read only? [Y/n]")
+  wrp = string.lower(tostring(io.read()))
+   if( wrp == "y" ) then
+   wrp = 1
+  else
+   wrp = 0
+  end
  end
 term.clear()
 print("MultiReactOS client Setup V1.0")
@@ -48,6 +66,7 @@ print(" ")
 script = [==[
  pport = ]==] .. pport .. [==[
  port = ]==] .. port .. [==[
+ inst = ]==] .. inst .. [==[
 local component = require("component")
 local gpu = component.proxy(component.list("gpu")())
 local screen = component.proxy(component.list("screen")())
@@ -110,12 +129,22 @@ while true do
 end
 ]==]
 
-print("Writing MultiReactOS client to EEPROM...")
-eeprom.set(script)
-eeprom.setLabel("MultiReactOS client")
-if ( wrp == 1 ) then
- eeprom.makeReadonly("fros")
+print("Writing MultiReactOS client")
+if( inst == 1 ) then
+ eeprom.set(script)
+ eeprom.setLabel("MultiReactOS client")
+ if ( wrp == 1 ) then
+  eeprom.makeReadonly("fros")
+ end
+ print("EEPROM succesfully written!")
+else
+  local handle, reason = fs.open(path, "w")
+ if not handle then
+   error("Nem sikerült megnyitni: " .. tostring(reason))
+ end
+  fs.write(handle, script)
+  print("Program succesfully written!")
+  fs.close(handle)
 end
-print("EEPROM succesfully written!")
 os.sleep(3)
 term.clear()
