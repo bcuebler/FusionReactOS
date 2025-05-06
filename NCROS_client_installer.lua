@@ -139,9 +139,9 @@ if( inst == 1 ) then
  print("EEPROM succesfully written!")
 else
  fs.open(path, "w")
- local handle, reason = fs.open(path, "w")
- if not handle then
-   error("Nem sikerült megnyitni: " .. tostring(reason))
+-- local handle, reason = fs.open(path, "w")
+-- if not handle then
+ --  error("Nem sikerült megnyitni: " .. tostring(reason))
  end
   fs.write(handle, script)
   print("Program succesfully written!")
