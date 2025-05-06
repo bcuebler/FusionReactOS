@@ -138,7 +138,8 @@ if( inst == 1 ) then
  end
  print("EEPROM succesfully written!")
 else
-  local handle, reason = fs.open(path, "w")
+ fs.open(path, "w")
+ local handle, reason = fs.open(path, "w")
  if not handle then
    error("Nem sikerült megnyitni: " .. tostring(reason))
  end
