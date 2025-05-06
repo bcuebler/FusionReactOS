@@ -61,7 +61,7 @@ while true do
       i = i + 1
     end
   end
-  local sig, _, _, _, _, msg = event.pull("modem_message")
+  sig, _, _, _, _, msg = event.pull("modem_message")
 end
 ]==]
 
