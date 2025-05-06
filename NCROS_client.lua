@@ -11,7 +11,6 @@ local gpu = component.proxy(component.list("gpu")())
 local screen = component.proxy(component.list("screen")())
 local modem = component.proxy(component.list("modem")())
 local event = require("event")
-local term = require("term")
 
 gpu.bind(screen.address)
 gpu.setResolution(50, 10)
