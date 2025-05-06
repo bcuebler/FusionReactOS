@@ -33,7 +33,6 @@ local _, count = msg:gsub("\n", "")
 gpu.setResolution(50, count)
 
 while true do
-  local sig, _, _, _, _, msg = event.pull("modem_message")
   if msg then
     gpu.fill(1, 1, 50, count, " ")
 
@@ -44,4 +43,5 @@ while true do
       i = i + 1
     end
   end
+  local sig, _, _, _, _, msg = event.pull("modem_message")
 end
