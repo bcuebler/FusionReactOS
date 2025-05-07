@@ -181,7 +181,7 @@ end
   print("EEPROM succesfully written!")
  else
    local file = io.open(path, "w")
-   file:write(client)
+   file:write(script)
    print("Program succesfully written!")
    file:close()
  end
