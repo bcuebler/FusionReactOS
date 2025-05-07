@@ -2,6 +2,19 @@ component = require("component")
 computer = require("computer")
 term = require("term")
 
+function chart()
+ print("FusionReactOS Setup V1.0")
+ print(" ")
+ print("side chart:")
+ print("0 = bottom")
+ print("1 = top")
+ print("2 = back")
+ print("3 = front")
+ print("4 = right")
+ print("5 = left")
+ print(" ")
+end
+
  computer.beep()
  term.clear()
  port = 0
