@@ -54,8 +54,9 @@ term.clear()
    end
  else
   fs = require("filesystem")
-  print("Installation path and name?")
+  print("Installation path and name? E.g.: /home")
   path = tostring(io.read())
+  path = path .. "/" .. programname .. ".lua"
   term.clear()
   print("MultiReactOS Setup V1.0")
  end
