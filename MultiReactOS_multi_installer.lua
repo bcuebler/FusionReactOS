@@ -10,6 +10,27 @@ term = require("term")
  port = 0
  print("MultiReactOS Setup V1.0")
  print(" ")
+ print("What would you like to install?")
+ print("1. Multi client")
+ print("2. Fusion Reactor controller")
+ print("3. Fission Reactor controller")
+ print("4. Molten Salt Reactor controller")
+ program = tonumber(io.read())
+if( program == 1 ) then
+ programname = "Multi_client"
+end
+if( program == 2 ) then
+ programname = "Fusion_Reactor_controller"
+end
+if( program == 3 ) then
+ programname = "Fission_Reactor_controller"
+end
+if( program == 4 ) then
+ programname = "Molten_Salt_Reactor_controller"
+end
+term.clear()
+ print("MultiReactOS Setup V1.0")
+ print(" ")
  print("Install into EEPROM or Disk? [E/D]")
    inst = string.lower(tostring(io.read()))
    if( inst == "e" ) then
@@ -58,10 +79,10 @@ term = require("term")
  term.clear()
  print("MultiReactOS Setup V1.0")
  print(" ")
- print("Writing MultiReactOS " .. program)
+ print("Writing MultiReactOS " .. programname)
  if( inst == 1 ) then
   eeprom.set(script)
-  eeprom.setLabel("MultiReactOS " .. program)
+  eeprom.setLabel("MROS " .. programname)
   if ( wrp == 1 ) then
    eeprom.makeReadonly("mros")
   end
