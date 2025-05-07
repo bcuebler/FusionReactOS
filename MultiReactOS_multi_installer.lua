@@ -2,9 +2,6 @@ component = require("component")
 computer = require("computer")
 term = require("term")
 
-
-
-
  computer.beep()
  term.clear()
  port = 0
@@ -18,15 +15,19 @@ term = require("term")
  program = tonumber(io.read())
 if( program == 1 ) then
  programname = "Multi_client"
+ script = client
 end
 if( program == 2 ) then
  programname = "Fusion_Reactor_controller"
+ script = 
 end
 if( program == 3 ) then
  programname = "Fission_Reactor_controller"
+ script = 
 end
 if( program == 4 ) then
  programname = "Molten_Salt_Reactor_controller"
+ script = 
 end
 term.clear()
  print("MultiReactOS Setup V1.0")
@@ -96,12 +97,6 @@ term.clear()
  end
  os.sleep(3)
  term.clear()
-
- 
-
-
-
-
 
  client = [==[
  pport = ]==] .. pport .. [==[
