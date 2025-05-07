@@ -13,11 +13,12 @@ fs = require("filesystem")
  eeprom = component.eeprom
  computer.beep()
  term.clear()
+port = 0
 print("MultiReactOS client Setup V1.0")
 print(" ")
 print("Install into EEPROM or Disk? [E/D]")
   inst = string.lower(tostring(io.read()))
-  if( inst == "E" ) then
+  if( inst == "e" ) then
   inst = 1
  else
   inst = 0
@@ -27,11 +28,13 @@ print("MultiReactOS client Setup V1.0")
 print(" ")
 if( inst == 1 ) then
  print("Insert an EEPROM to be written THEN continue")
- print(" ")
 else
  print("Installation path and name?")
  path = tostring(io.read())
+ term.clear()
+ print("MultiReactOS client Setup V1.0")
 end
+print(" ")
 print("Predefined modem port? [Y/n]")
  pport = string.lower(tostring(io.read()))
   if( pport == "y" ) then
