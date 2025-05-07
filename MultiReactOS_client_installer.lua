@@ -153,13 +153,10 @@ if( inst == 1 ) then
  end
  print("EEPROM succesfully written!")
 else
- local handle, reason = fs.open(path, "w")
- if not handle then
-   error("Nem sikerült megnyitni: " .. tostring(reason))
- end
-  fs.write(handle, script)
+  local file = io.open(path, "w")
+  file:write(script)
   print("Program succesfully written!")
-  fs.close(handle)
+  file:close()
 end
 os.sleep(3)
 term.clear()
