@@ -36,11 +36,11 @@ if( program == 2 ) then
 end
 if( program == 3 ) then
  programname = "Fission_Reactor_controller"
- script = 
+ script = "alma"
 end
 if( program == 4 ) then
  programname = "Molten_Salt_Reactor_controller"
- script = 
+ script = "alma"
 end
 term.clear()
  print("MultiReactOS Setup V1.0")
