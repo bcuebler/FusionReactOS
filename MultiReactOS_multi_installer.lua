@@ -98,6 +98,7 @@ end
 
 --Fusion Reactor install
 if( program == 2 ) then
+temr.clear()
 print("MultiReactOS-Fusion Setup V1.0")
 print(" ")
 print("Modem installed? [Y/n]")
