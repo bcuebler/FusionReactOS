@@ -2,14 +2,10 @@ The client.lua and its installer and the server only work in lua (OpenOS), when 
 
 Here is the link for the Reactor controller server installer:
 ```
-wget -f https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/NCROS_installer.lua /bin/NCROS_installer.lua
+wget -f https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/NCROS_installer.lua /bin/MROS_installer.lua
 ```
 
-And for the client:
+And for the client installer:
 ```
-wget -f https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/NCROS_client.lua /bin/NCROS_client.lua
-```
-And for the client installer for eeprom based systems:
-```
-wget -f https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/NCROS_client_installer.lua /bin/NCROS_client_installer.lua
+wget -f https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/MultiReactOS_client_installer.lua /tmp/MROS_client_installer.lua
 ```
