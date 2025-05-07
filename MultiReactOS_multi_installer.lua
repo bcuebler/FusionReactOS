@@ -75,9 +75,10 @@ term.clear()
   print("MultiReactOS Setup V1.0")
  end
 
+--Client install
 if( program == 1 ) then
  term.clear()
- print("MultiReactOS Setup V1.0")
+ print("MultiReactOS-Client Setup V1.0")
  print(" ")
  print("Predefined modem port? [Y/n]")
   pport = string.lower(tostring(io.read()))
@@ -88,13 +89,85 @@ if( program == 1 ) then
   end
  if( pport == 1 ) then
   term.clear()
-  print("MultiReactOS Setup V1.0")
+  print("MultiReactOS-Client Setup V1.0")
   print(" ")
   print("Modem port?")
   port = tonumber(io.read())
  end
 end
 
+--Fusion Reactor install
+if( program == 2 ) then
+print("MultiReactOS-Fusion Setup V1.0")
+print(" ")
+print("Modem installed? [Y/n]")
+ modm = string.lower(tostring(io.read()))
+ if( modm == "y" ) then
+  modm = 1
+ else
+  modm = 0
+ end
+term.clear()
+print("MultiReactOS-Fusion Setup V1.0")
+print(" ")
+print("Direct screen installed? [Y/n]")
+ scrn = string.lower(tostring(io.read()))
+  if( scrn == "y" ) then
+  scrn = 1
+ else
+  scrn = 0
+ end
+term.clear()
+if ( modm == 1 ) then
+print("MultiReactOS-Fusion Setup V1.0")
+print(" ")
+print("Modem port?")
+ port = tonumber(io.read())
+term.clear()
+end
+ 
+if(( modm == 1 ) or ( scrn == 1 )) then
+ print("MultiReactOS-Fusion Setup V1.0")
+ print(" ")
+ print("Data refresh Speed?")
+ dt = tonumber(io.read())
+ term.clear()
+end
+ 
+ 
+ chart()
+ print("Please enter the side value for the alarm output side:")
+  sideal = tonumber( io.read() )
+ term.clear()
+ chart()
+ print("Reactor standby input side:")
+  sidersleep = tonumber( io.read() )
+ term.clear()
+ chart()
+ print("Reactor Disable input side:")
+  offside = tonumber( io.read() )
+ term.clear()
+ chart()
+ print("Reactor input enable output side:")
+  outside = tonumber( io.read() )
+ term.clear()
+ chart()
+ print("Energy output enable output side:")
+  pwro = tonumber( io.read() )
+ term.clear()
+ print("MultiReactOS-Fusion Setup V1.0")
+ print(" ")
+ print("Enable alarm use as computer beeper? [Y/n]")
+  almb = string.lower(tostring(io.read()))
+   if( almb == "y" ) then
+  almb = 1
+ else
+  almb = 0
+ end
+ term.clear()
+end
+
+ 
  term.clear()
  print("MultiReactOS Setup V1.0")
  print(" ")
@@ -205,10 +278,14 @@ end
  scrn = ]==] .. scrn .. [==[
  port = ]==] .. port .. [==[
  dt = ]==] .. dt .. [==[
+ inst = ]==] .. inst .. [==[
  
  mod = "nil"
  
  delaly = 0
+if( inst == 0 ) then
+ component.require("component")
+end
  invoke = component.invoke
  computer = component.proxy(component.list("computer")())
  reactor = component.proxy(component.list("nc_fusion_reactor")())
@@ -379,3 +456,4 @@ temp = reactor.getTemperature()
  end
 end
 ]==]
+
