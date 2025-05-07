@@ -268,19 +268,19 @@ while true do
 end
 ]==]
 
- fusion = [==[
- sideal = ]==] .. sideal .. [==[
- side = ]==] .. sidersleep .. [==[
+ fusion = [====[
+ sideal = ]====] .. sideal .. [====[
+ side = ]====] .. sidersleep .. [====[
  alert = false
- offside = ]==] .. offside .. [==[
- outside = ]==] .. outside .. [==[
- almb = ]==] .. almb .. [==[
- pwro = ]==] .. pwro .. [==[
- modm = ]==] .. modm .. [==[
- scrn = ]==] .. scrn .. [==[
- port = ]==] .. port .. [==[
- dt = ]==] .. dt .. [==[
- inst = ]==] .. inst .. [==[
+ offside = ]====] .. offside .. [====[
+ outside = ]====] .. outside .. [====[
+ almb = ]====] .. almb .. [====[
+ pwro = ]====] .. pwro .. [====[
+ modm = ]====] .. modm .. [====[
+ scrn = ]====] .. scrn .. [====[
+ port = ]====] .. port .. [====[
+ dt = ]====] .. dt .. [====[
+ inst = ]====] .. inst .. [====[
  
  mod = "nil"
  
@@ -457,5 +457,5 @@ temp = reactor.getTemperature()
   enable = 1
  end
 end
-]==]
+]====]
 
