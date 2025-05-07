@@ -67,27 +67,33 @@ script = [==[
  pport = ]==] .. pport .. [==[
  port = ]==] .. port .. [==[
  inst = ]==] .. inst .. [==[
-local component = require("component")
+
+if( inst == 0 ) then
+ component = require("component")
+ event = require("event")
+end
 local gpu = component.proxy(component.list("gpu")())
 local screen = component.proxy(component.list("screen")())
 local modem = component.proxy(component.list("modem")())
-local event = require("event")
 local keyboard = component.proxy(component.list("keyboard")())
 
-local input = ""
+input = ""
+enbl = 1
 
 gpu.bind(screen.address)
 gpu.setResolution(50, 10)
---gpu.setForeground(0xFFFFFF)
---gpu.setBackground(0x000000)
 
 gpu.fill(1, 1, 50, 10, " ")
 
-if( pport == 0 )
+if( pport == 0 ) then
 gpu.set(1, 1, "Modem port?")
 
  while true do
-   local signalType, _, char, code = event.pull()
+   if( inst == 0 ) then
+     signalType, _, char, code = event.pull()
+   else
+     signalType, _, char, code = computer.pullSignal()
+   end
 
    if signalType == "key_down" then
      local c = string.char(char)
@@ -110,12 +116,19 @@ modem.open(tonumber(port))
 
 gpu.fill(1, 1, 50, 10, " ")
 
-local sig, _, _, _, _, msg = event.pull("modem_message")
-local _, count = msg:gsub("\n", "")
-gpu.setResolution(50, count)
-
 while true do
+ if( inst == 0 ) then
+  sig, _, _, _, _, msg = event.pull("modem_message")
+ else
+  sig, _, _, _, _, msg = computer.pullSignal("modem_message")
+ end
+
   if msg then
+    if( enbl == 1 ) then
+     enbl = 0
+     _, count = tostring(msg):gsub("\n", "")
+     gpu.setResolution(50, count)
+    end
     gpu.fill(1, 1, 50, count, " ")
 
     local i = 1
@@ -125,7 +138,6 @@ while true do
       i = i + 1
     end
   end
-  sig, _, _, _, _, msg = event.pull("modem_message")
 end
 ]==]
 
