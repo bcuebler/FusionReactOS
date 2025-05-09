@@ -360,8 +360,6 @@ end
  end
  if(inst == 0) then
  sig, _, _, _, _, msg = event.pull()
- else
-  sig, _, _, _, _, msg = computer.pullSignal()
  end
  if(sig == "key_down") and (inst == 0) then
  component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
