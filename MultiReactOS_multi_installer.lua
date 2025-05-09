@@ -153,8 +153,10 @@ end
 end
 
 
-
-client = [==[
+if( program == 1 ) then
+ programname = "Multi_client"
+--client
+script = [==[
  pport = ]==] .. pport .. [==[
  port = ]==] .. port .. [==[
  inst = ]==] .. inst .. [==[
@@ -231,8 +233,11 @@ while true do
   end
 end
 ]==]
+end
 
- fusion = [====[
+ if( program == 2 ) then
+ programname = "Fusion_Reactor_controller"
+ script = [====[
  sideal = ]====] .. sideal .. [====[
  side = ]====] .. sidersleep .. [====[
  alert = false
@@ -422,23 +427,14 @@ temp = reactor.getTemperature()
  end
 end
 ]====]
+end
 
 
-if( program == 1 ) then
- programname = "Multi_client"
- script = client
-end
-if( program == 2 ) then
- programname = "Fusion_Reactor_controller"
- script = fusion
-end
 if( program == 3 ) then
  programname = "Fission_Reactor_controller"
- script = "alma"
 end
 if( program == 4 ) then
  programname = "Molten_Salt_Reactor_controller"
- script = "alma"
 end
 
 
