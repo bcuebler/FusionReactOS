@@ -211,14 +211,16 @@ gpu.fill(1, 1, 50, 10, " ")
 while true do
  if( inst == 0 ) then
   sig, _, _, _, _, msg = event.pull("modem_message")
-  _, _, _, codee = event.pull("key_down")
+  name, _, _, codee = event.pull(0)
  else
   sig, _, _, _, _, msg = computer.pullSignal("modem_message")
-  _, _, _, codee = computer.pullSignal("key_down")
+  name, _, _, codee = computer.pullSignal(0)
  end
 
-  if( codee == keyboard.keys.escape ) then
-    break
+  if name == "key_down" then
+   if( codee == 16 ) then
+     break
+   end
   end
  
   if msg then
