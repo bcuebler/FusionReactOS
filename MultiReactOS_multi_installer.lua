@@ -437,6 +437,7 @@ end
 
 if( program == 3 ) then
  programname = "MROS_Fission_RC"
+end
 if( program == 4 ) then
  programname = "MROS_Molten_Salt_RC"
 end
