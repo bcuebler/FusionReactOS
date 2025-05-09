@@ -278,7 +278,7 @@ if(scrn == 1) then
  component.invoke(gpu, "setResolution", 50, 10)
  component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
  component.invoke(gpu, "set", 1, 1, "Starting")
- oldW, oldH = gpu.getResolution()
+ W, H = gpu.getResolution()
 end
 if(modm == 1) then
  modem = component.proxy(component.list("modem")())
@@ -329,16 +329,6 @@ while true do
    rs.setOutput(outside, 15)
   end
  end
-  if(inst == 0) then
- sig, _, _, _, _, msg = event.pull()
- else
-  sig, _, _, _, _, msg = computer.pullSignal()
- end
-  if(sig == "key_down") and (inst == 0) then
-   gpu.fill(1, 1, 50, count, " ")
-   gpu.setResolution(oldW, oldH)
-   break
-  end
  maxtemp = reactor.getMaxTemperature()
  delaly = delaly + 1
  if(delaly > dt) then
@@ -365,6 +355,16 @@ message = "Temperature: "..temp.." K\n"
  end
 end
   delaly = 0
+ end
+ if(inst == 0) then
+ sig, _, _, _, _, msg = event.pull()
+ else
+  sig, _, _, _, _, msg = computer.pullSignal()
+ end
+ if(sig == "key_down") and (inst == 0) then
+  gpu.fill(1, 1, 50, count, " ")
+  gpu.setResolution(W, H)
+  break
  end
  if (alert == true) then
   rs.setOutput(sideal, 15)
