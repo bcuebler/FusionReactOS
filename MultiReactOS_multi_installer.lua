@@ -278,7 +278,7 @@ if(scrn == 1) then
  component.invoke(gpu, "setResolution", 50, 10)
  component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
  component.invoke(gpu, "set", 1, 1, "Starting")
- W, H = gpu.getResolution()
+ W, H =  component.invoke(gpu, "getResolution")
 end
 if(modm == 1) then
  modem = component.proxy(component.list("modem")())
@@ -362,8 +362,8 @@ end
   sig, _, _, _, _, msg = computer.pullSignal()
  end
  if(sig == "key_down") and (inst == 0) then
-  gpu.fill(1, 1, 50, count, " ")
-  gpu.setResolution(W, H)
+ component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
+ component.invoke(gpu, "setResolution", W, H)
   break
  end
  if (alert == true) then
