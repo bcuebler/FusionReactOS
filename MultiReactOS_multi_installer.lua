@@ -210,23 +210,23 @@ gpu.fill(1, 1, 50, 10, " ")
 
 while true do
  if( inst == 0 ) then
- --sig, _, _, _, _, msg = event.pull("modem_message")
+ sig, _, _, _, _, msg = event.pull(0)
   name, _, _, codee = event.pull(0)
  else
-  --sig, _, _, _, _, msg = computer.pullSignal("modem_message")
+  sig, _, _, _, _, msg = computer.pullSignal(0)
   name, _, _, codee = computer.pullSignal(0)
  end
  
-  if codee and ( name == "modem_message" ) then
+  if msg and ( sig == "modem_message" ) then
     if( enbl == 1 ) then
      enbl = 0
-     _, count = tostring(codee):gsub("\n", "")
+     _, count = tostring(msg):gsub("\n", "")
      gpu.setResolution(50, count)
     end
     gpu.fill(1, 1, 50, count, " ")
 
     local i = 1
-    for line in tostring(codee):gmatch("([^\n]*)\n?") do
+    for line in tostring(msg):gmatch("([^\n]*)\n?") do
       if i > count then break end
       gpu.set(1, i, line:sub(1, 50))
       i = i + 1
