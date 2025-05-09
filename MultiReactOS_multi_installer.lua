@@ -439,7 +439,7 @@ end
  term.clear()
  print("MultiReactOS Setup V1.0")
  print(" ")
- print("Writing MultiReactOS " .. programname)
+ print("Writing " .. programname)
  if( inst == 1 ) then
   eeprom.set(script)
   eeprom.setLabel(programname)
