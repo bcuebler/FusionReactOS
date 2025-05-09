@@ -217,7 +217,7 @@ while true do
   name, _, _, codee = computer.pullSignal(0)
  end
  
-  if msg and ( sig == "modem_message" ) then
+  if ( sig == "modem_message" ) then
     if( enbl == 1 ) then
      enbl = 0
      _, count = tostring(msg):gsub("\n", "")
@@ -233,11 +233,9 @@ while true do
     end
   end
  
-   if name == "key_down" then
-   if( codee == 16 ) then
-     gpu.fill(1, 1, 50, count, " ")
-     break
-   end
+  if name == "key_down" then
+   gpu.fill(1, 1, 50, count, " ")
+   break
   end
  
 end
