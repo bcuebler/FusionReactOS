@@ -153,7 +153,7 @@ end
 
 
 if( program == 1 ) then
- programname = "Multi_client"
+ programname = "MROS_Multi_client"
 --client
 script = [==[
  pport = ]==] .. pport .. [==[
@@ -235,7 +235,7 @@ end
 end
 
  if( program == 2 ) then
- programname = "Fusion_Reactor_controller"
+ programname = "Fusion_RC"
  script = [====[
  sideal = ]====] .. sideal .. [====[
  side = ]====] .. sidersleep .. [====[
@@ -430,10 +430,9 @@ end
 
 
 if( program == 3 ) then
- programname = "Fission_Reactor_controller"
-end
+ programname = "MROS_Fission_RC"
 if( program == 4 ) then
- programname = "Molten_Salt_Reactor_controller"
+ programname = "MROS_Molten_Salt_RC"
 end
 
 
@@ -443,7 +442,7 @@ end
  print("Writing MultiReactOS " .. programname)
  if( inst == 1 ) then
   eeprom.set(script)
-  eeprom.setLabel("MROS " .. programname)
+  eeprom.setLabel(programname)
   if ( wrp == 1 ) then
    eeprom.makeReadonly("mros")
   end
