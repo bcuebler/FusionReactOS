@@ -164,10 +164,10 @@ if( inst == 0 ) then
  component = require("component")
  event = require("event")
 end
-local gpu = component.proxy(component.list("gpu")())
-local screen = component.proxy(component.list("screen")())
-local modem = component.proxy(component.list("modem")())
-local keyboard = component.proxy(component.list("keyboard")())
+gpu = component.proxy(component.list("gpu")())
+screen = component.proxy(component.list("screen")())
+modem = component.proxy(component.list("modem")())
+keyboard = component.proxy(component.list("keyboard")())
 
 input = ""
 enbl = 1
@@ -211,10 +211,17 @@ gpu.fill(1, 1, 50, 10, " ")
 while true do
  if( inst == 0 ) then
   sig, _, _, _, _, msg = event.pull("modem_message")
+  _, _, _, codee = event.pull("key_down")
  else
   sig, _, _, _, _, msg = computer.pullSignal("modem_message")
+  _, _, _, codee = computer.pullSignal("key_down")
  end
 
+  if codee == keyboard.keys.escape then
+    print("ESC megnyomva, kilépés.")
+    break -- vagy os.exit()
+  end
+ 
   if msg then
     if( enbl == 1 ) then
      enbl = 0
