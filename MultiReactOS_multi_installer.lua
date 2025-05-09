@@ -254,7 +254,7 @@ end
  
  delaly = 0
 if( inst == 0 ) then
- component.require("component")
+ component = require("component")
 end
  invoke = component.invoke
  computer = component.proxy(component.list("computer")())
