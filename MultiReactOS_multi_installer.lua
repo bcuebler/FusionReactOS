@@ -216,12 +216,6 @@ while true do
   --sig, _, _, _, _, msg = computer.pullSignal("modem_message")
   name, _, _, codee = computer.pullSignal(0)
  end
-
-  if name == "key_down" then
-   if( codee == 16 ) then
-     break
-   end
-  end
  
   if codee and ( name == "modem_message" ) then
     if( enbl == 1 ) then
@@ -238,6 +232,14 @@ while true do
       i = i + 1
     end
   end
+ 
+   if name == "key_down" then
+   if( codee == 16 ) then
+     gpu.fill(1, 1, 50, count, " ")
+     break
+   end
+  end
+ 
 end
 ]==]
 end
