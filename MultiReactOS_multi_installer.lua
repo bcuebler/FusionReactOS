@@ -210,11 +210,9 @@ gpu.fill(1, 1, 50, 10, " ")
 
 while true do
  if( inst == 0 ) then
- sig, _, _, _, _, msg = event.pull(0)
-  name, _, _, codee = event.pull(0)
+ sig, _, _, _, _, msg = event.pull()
  else
-  sig, _, _, _, _, msg = computer.pullSignal(0)
-  name, _, _, codee = computer.pullSignal(0)
+  sig, _, _, _, _, msg = computer.pullSignal()
  end
  
   if ( sig == "modem_message" ) then
@@ -233,7 +231,7 @@ while true do
     end
   end
  
-  if name == "key_down" then
+  if sig == "key_down" then
    gpu.fill(1, 1, 50, count, " ")
    break
   end
