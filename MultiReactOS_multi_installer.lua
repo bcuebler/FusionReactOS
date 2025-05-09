@@ -246,7 +246,7 @@ end
 
  if( program == 2 ) then
  programname = "Fusion_RC"
- 
+ --Fusion reactor controller
  script = [====[
  sideal = ]====] .. sideal .. [====[
  side = ]====] .. sidersleep .. [====[
@@ -263,7 +263,7 @@ end
  
  mod = "nil"
  delaly = 0
-if( inst == 0 ) then
+if(inst == 0) then
  component = require("component")
  event = require("event")
 end
@@ -271,22 +271,20 @@ end
  computer = component.proxy(component.list("computer")())
  reactor = component.proxy(component.list("nc_fusion_reactor")())
  rs = component.proxy(component.list("redstone")())
-if( scrn == 1 ) then
+if(scrn == 1) then
  gpu = component.list("gpu")()
  screen = component.list("screen")()
  component.invoke(gpu, "bind", screen)
--- maxX, maxY = component.invoke(gpu, "maxResolution")
  component.invoke(gpu, "setResolution", 50, 10)
  component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
  component.invoke(gpu, "set", 1, 1, "Starting")
  oldW, oldH = gpu.getResolution()
 end
- 
-if( modm == 1 ) then
+if(modm == 1) then
  modem = component.proxy(component.list("modem")())
  modem.open(port)
  modem.broadcast(port, "Port: ".. port .. "started!")
- if( modem.isOpen(port) == false ) then
+ if(modem.isOpen(port) == false) then
   repeat
    computer.beep(2000, 0.5)
    sleep(10)
@@ -298,36 +296,32 @@ end
  a = 0
  b = 0
  rs.setOutput(pwro, 0)
- eff = 0 
-
+ eff = 0
 function electromagnetsPowered()
    problem = reactor.getProblem()
   return problem == "E-magnets not Powered"
 end
- 
 function sleep(delay)
  repeat
  b = ( b + 1 )
- until b == ( delay * 10 )
+ until b == (delay * 10)
  b = 0
 end
- 
 computer.beep(1000, 0.1)
-if ( almb == 1 ) then
+if (almb == 1) then
  rs.setOutput(sideal, 15)
  sleep(0.1)
  rs.setOutput(sideal, 0)
 end
  rs.setOutput(sideal, 0)
 mod = "Starting"
- 
 while true do
- if ( rs.getInput(side) < 1) or ( electromagnetsPowered() ) then
+ if (rs.getInput(side) < 1) or (electromagnetsPowered()) then
   rs.setOutput(outside, 15)
   repeat
    reactor.deactivate()
    sleep(1)
-  until ( false == electromagnetsPowered() )
+  until (false == electromagnetsPowered())
  else
   if ( eff > 0.9999 ) then
    rs.setOutput(outside, 0)
@@ -335,37 +329,35 @@ while true do
    rs.setOutput(outside, 15)
   end
  end
-
-  if( inst == 0 ) then
+  if(inst == 0) then
  sig, _, _, _, _, msg = event.pull()
  else
   sig, _, _, _, _, msg = computer.pullSignal()
  end
-  if( sig == "key_down" ) and ( inst == 0 ) then
+  if(sig == "key_down") and (inst == 0) then
    gpu.fill(1, 1, 50, count, " ")
    gpu.setResolution(oldW, oldH)
    break
   end
- 
  maxtemp = reactor.getMaxTemperature()
  delaly = delaly + 1
- if( delaly > dt ) then
-  local x = 1
-  local y = 1
-  local message = "Temperature: " .. temp .. " K\n"
-  .. "Problem: " .. reactor.getProblem() .. "\n"
-  .. "Stored energy: " .. reactor.getEnergyStored() .. " RF" .. "\n"
-  .. "First reactor fuel: " .. reactor.getFirstFusionFuel() .."\n"
-  .. "Second reactor fuel: " .. reactor.getSecondFusionFuel() .. "\n"
-  .. "Energy change: " .. reactor.getEnergyChange() .. " RF/t" .. "\n"
-  .. "State: " .. mod .. "\n"
-  .. "Efficiency: " .. eff .. " %" .. "\n"
-  .. "Max temperature: " .. maxtemp .. " K" .. "\n"
-  .. "Max energy stored: " .. reactor.getMaxEnergyStored() .. " RF"
- if( modm == 1 ) then
+ if(delaly > dt) then
+x = 1
+y = 1
+message = "Temperature: "..temp.." K\n"
+.."Problem: "..reactor.getProblem().."\n"
+.."Stored energy: "..reactor.getEnergyStored().." RF".."\n"
+.."First reactor fuel: "..reactor.getFirstFusionFuel().."\n"
+.."Second reactor fuel: "..reactor.getSecondFusionFuel().."\n"
+.."Energy change: "..reactor.getEnergyChange().." RF/t".."\n"
+.."State: ".. mod .."\n"
+.."Efficiency: "..eff.." %".."\n"
+.."Max temperature: "..maxtemp.." K".."\n"
+.."Max energy: "..reactor.getMaxEnergyStored().." RF"
+ if(modm == 1) then
   modem.broadcast(port, message)
  end
- if( scrn == 1 ) then
+ if(scrn == 1) then
  component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
  for line in string.gmatch(message, "([^\n]+)") do
   component.invoke(gpu, "set", x, y, line)
@@ -374,14 +366,13 @@ while true do
 end
   delaly = 0
  end
- 
- if ( alert == true ) then
+ if (alert == true) then
   rs.setOutput(sideal, 15)
  reactor.deactivate()
  mod = "Alert"
  repeat
   computer.beep(2000, 0.5)
-  if ( almb == 1 ) then
+  if (almb == 1) then
    rs.setOutput(sideal, 15)
    sleep(0.1)
    rs.setOutput(sideal, 0)
@@ -389,60 +380,54 @@ end
   sleep(0.5)
  until ( 1 == 0 )
  end
- switch = ( rs.getInput(side) > 0)
- if ( enable == 1 ) and ( preheat == 1 ) and ( rs.getInput(offside) > 0) then
+ switch = (rs.getInput(side) > 0)
+ if (enable == 1) and (preheat == 1) and (rs.getInput(offside) > 0) then
   reactor.activate()
  else
   reactor.deactivate()
  end
- 
 temp = reactor.getTemperature()
- if ( eff > 1 ) and ( switch == false ) then
+ if (eff > 1) and (switch == false) then
   preheat = 0
  else
   preheat = 1
  end
- 
- if (( switch == false ) and ( rs.getInput(offside) > 0)) then
+ if ((switch == false) and (rs.getInput(offside) > 0)) then
   mod = "Preheating"
  else
-  if ( rs.getInput(offside) > 0) then
+  if (rs.getInput(offside) > 0) then
    mod = "Working"
   else
    mod = "Off"
   end
  end
- 
- if ( temp > maxtemp ) or ( electromagnetsPowered() ) then
+ if (temp > maxtemp) or (electromagnetsPowered()) then
   alert = true
  end
- 
  if ( switch == false ) then
   a = ( a + 1 )
   if ( a > 45 ) then
    a = 0
     computer.beep()
-     if ( almb == 1 ) then
+     if (almb == 1) then
      rs.setOutput(sideal, 15)
      sleep(0.1)
      rs.setOutput(sideal, 0)
     end
   end
  end
- 
  eff = reactor.getEfficiency()
- if ( eff > 90 ) and ( switch == true ) and ( rs.getInput(offside) > 0) then
+ if (eff > 90) and (switch == true) and (rs.getInput(offside) > 0) then
   rs.setOutput(pwro, 15)
  else
   rs.setOutput(pwro, 0)
  end
- 
- if ( eff > 99.999  ) and ( switch == true ) then
+ if (eff > 99.999) and (switch == true) then
   enable = 0
  else
   enable = 1
  end
- if ( switch == false ) then
+ if (switch == false) then
   enable = 1
  end
 end
