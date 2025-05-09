@@ -247,7 +247,6 @@ end
  if( program == 2 ) then
  programname = "Fusion_RC"
  --Fusion reactor controller
--- .."Max energy: "..reactor.getMaxEnergyStored().." RF"
  
  script = [====[
  sideal = ]====] .. sideal .. [====[
