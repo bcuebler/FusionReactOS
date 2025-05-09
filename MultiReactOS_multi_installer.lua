@@ -217,9 +217,8 @@ while true do
   _, _, _, codee = computer.pullSignal("key_down")
  end
 
-  if codee == keyboard.keys.escape then
-    print("ESC megnyomva, kilépés.")
-    break -- vagy os.exit()
+  if( codee == keyboard.keys.escape ) then
+    break
   end
  
   if msg then
