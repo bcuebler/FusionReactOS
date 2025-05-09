@@ -2,6 +2,156 @@ component = require("component")
 computer = require("computer")
 term = require("term")
 
+function chart()
+ print("FusionReactOS Setup V1.0")
+ print(" ")
+ print("side chart:")
+ print("0 = bottom")
+ print("1 = top")
+ print("2 = back")
+ print("3 = front")
+ print("4 = right")
+ print("5 = left")
+ print(" ")
+end
+
+ computer.beep()
+ term.clear()
+ port = 0
+ print("MultiReactOS Setup V1.0")
+ print(" ")
+ print("What would you like to install?")
+ print("1. Multi client")
+ print("2. Fusion Reactor controller")
+ print("3. Fission Reactor controller")
+ print("4. Molten Salt Reactor controller")
+ program = tonumber(io.read())
+term.clear()
+ print("MultiReactOS Setup V1.0")
+ print(" ")
+ print("Install into EEPROM or Disk? [E/D]")
+   inst = string.lower(tostring(io.read()))
+   if( inst == "e" ) then
+   inst = 1
+  else
+   inst = 0
+  end
+  term.clear()
+ print("MultiReactOS Setup V1.0")
+ print(" ")
+  if( inst == 1 ) then
+  print("Insert an EEPROM to be written THEN continue")
+  eeprom = component.eeprom
+   print(" ")
+  print("Set EEPROM as read only? [Y/n]")
+   wrp = string.lower(tostring(io.read()))
+    if( wrp == "y" ) then
+    wrp = 1
+   else
+    wrp = 0
+   end
+ else
+  fs = require("filesystem")
+  print("Installation path and name? E.g.: /home")
+  path = tostring(io.read())
+  path = path .. "/" .. programname .. ".lua"
+  term.clear()
+  print("MultiReactOS Setup V1.0")
+ end
+
+--Client install
+if( program == 1 ) then
+ term.clear()
+ print("MultiReactOS-Client Setup V1.0")
+ print(" ")
+ print("Predefined modem port? [Y/n]")
+  pport = string.lower(tostring(io.read()))
+   if( pport == "y" ) then
+   pport = 1
+  else
+   pport = 0
+  end
+ if( pport == 1 ) then
+  term.clear()
+  print("MultiReactOS-Client Setup V1.0")
+  print(" ")
+  print("Modem port?")
+  port = tonumber(io.read())
+ end
+end
+
+--Fusion Reactor install
+if( program == 2 ) then
+term.clear()
+print("MultiReactOS-Fusion Setup V1.0")
+print(" ")
+print("Modem installed? [Y/n]")
+ modm = string.lower(tostring(io.read()))
+ if( modm == "y" ) then
+  modm = 1
+ else
+  modm = 0
+ end
+term.clear()
+print("MultiReactOS-Fusion Setup V1.0")
+print(" ")
+print("Direct screen installed? [Y/n]")
+ scrn = string.lower(tostring(io.read()))
+  if( scrn == "y" ) then
+  scrn = 1
+ else
+  scrn = 0
+ end
+term.clear()
+if ( modm == 1 ) then
+print("MultiReactOS-Fusion Setup V1.0")
+print(" ")
+print("Modem port?")
+ port = tonumber(io.read())
+term.clear()
+end
+ 
+if(( modm == 1 ) or ( scrn == 1 )) then
+ print("MultiReactOS-Fusion Setup V1.0")
+ print(" ")
+ print("Data refresh Speed?")
+ dt = tonumber(io.read())
+ term.clear()
+end
+ 
+ 
+ chart()
+ print("Please enter the side value for the alarm output side:")
+  sideal = tonumber( io.read() )
+ term.clear()
+ chart()
+ print("Reactor standby input side:")
+  sidersleep = tonumber( io.read() )
+ term.clear()
+ chart()
+ print("Reactor Disable input side:")
+  offside = tonumber( io.read() )
+ term.clear()
+ chart()
+ print("Reactor input enable output side:")
+  outside = tonumber( io.read() )
+ term.clear()
+ chart()
+ print("Energy output enable output side:")
+  pwro = tonumber( io.read() )
+ term.clear()
+ print("MultiReactOS-Fusion Setup V1.0")
+ print(" ")
+ print("Enable alarm use as computer beeper? [Y/n]")
+  almb = string.lower(tostring(io.read()))
+   if( almb == "y" ) then
+  almb = 1
+ else
+  almb = 0
+ end
+ term.clear()
+end
+
 
 
 client = [==[
@@ -274,31 +424,6 @@ end
 ]====]
 
 
-
-function chart()
- print("FusionReactOS Setup V1.0")
- print(" ")
- print("side chart:")
- print("0 = bottom")
- print("1 = top")
- print("2 = back")
- print("3 = front")
- print("4 = right")
- print("5 = left")
- print(" ")
-end
-
- computer.beep()
- term.clear()
- port = 0
- print("MultiReactOS Setup V1.0")
- print(" ")
- print("What would you like to install?")
- print("1. Multi client")
- print("2. Fusion Reactor controller")
- print("3. Fission Reactor controller")
- print("4. Molten Salt Reactor controller")
- program = tonumber(io.read())
 if( program == 1 ) then
  programname = "Multi_client"
  script = client
@@ -315,133 +440,8 @@ if( program == 4 ) then
  programname = "Molten_Salt_Reactor_controller"
  script = "alma"
 end
-term.clear()
- print("MultiReactOS Setup V1.0")
- print(" ")
- print("Install into EEPROM or Disk? [E/D]")
-   inst = string.lower(tostring(io.read()))
-   if( inst == "e" ) then
-   inst = 1
-  else
-   inst = 0
-  end
-  term.clear()
- print("MultiReactOS Setup V1.0")
- print(" ")
-  if( inst == 1 ) then
-  print("Insert an EEPROM to be written THEN continue")
-  eeprom = component.eeprom
-   print(" ")
-  print("Set EEPROM as read only? [Y/n]")
-   wrp = string.lower(tostring(io.read()))
-    if( wrp == "y" ) then
-    wrp = 1
-   else
-    wrp = 0
-   end
- else
-  fs = require("filesystem")
-  print("Installation path and name? E.g.: /home")
-  path = tostring(io.read())
-  path = path .. "/" .. programname .. ".lua"
-  term.clear()
-  print("MultiReactOS Setup V1.0")
- end
 
---Client install
-if( program == 1 ) then
- term.clear()
- print("MultiReactOS-Client Setup V1.0")
- print(" ")
- print("Predefined modem port? [Y/n]")
-  pport = string.lower(tostring(io.read()))
-   if( pport == "y" ) then
-   pport = 1
-  else
-   pport = 0
-  end
- if( pport == 1 ) then
-  term.clear()
-  print("MultiReactOS-Client Setup V1.0")
-  print(" ")
-  print("Modem port?")
-  port = tonumber(io.read())
- end
-end
 
---Fusion Reactor install
-if( program == 2 ) then
-term.clear()
-print("MultiReactOS-Fusion Setup V1.0")
-print(" ")
-print("Modem installed? [Y/n]")
- modm = string.lower(tostring(io.read()))
- if( modm == "y" ) then
-  modm = 1
- else
-  modm = 0
- end
-term.clear()
-print("MultiReactOS-Fusion Setup V1.0")
-print(" ")
-print("Direct screen installed? [Y/n]")
- scrn = string.lower(tostring(io.read()))
-  if( scrn == "y" ) then
-  scrn = 1
- else
-  scrn = 0
- end
-term.clear()
-if ( modm == 1 ) then
-print("MultiReactOS-Fusion Setup V1.0")
-print(" ")
-print("Modem port?")
- port = tonumber(io.read())
-term.clear()
-end
- 
-if(( modm == 1 ) or ( scrn == 1 )) then
- print("MultiReactOS-Fusion Setup V1.0")
- print(" ")
- print("Data refresh Speed?")
- dt = tonumber(io.read())
- term.clear()
-end
- 
- 
- chart()
- print("Please enter the side value for the alarm output side:")
-  sideal = tonumber( io.read() )
- term.clear()
- chart()
- print("Reactor standby input side:")
-  sidersleep = tonumber( io.read() )
- term.clear()
- chart()
- print("Reactor Disable input side:")
-  offside = tonumber( io.read() )
- term.clear()
- chart()
- print("Reactor input enable output side:")
-  outside = tonumber( io.read() )
- term.clear()
- chart()
- print("Energy output enable output side:")
-  pwro = tonumber( io.read() )
- term.clear()
- print("MultiReactOS-Fusion Setup V1.0")
- print(" ")
- print("Enable alarm use as computer beeper? [Y/n]")
-  almb = string.lower(tostring(io.read()))
-   if( almb == "y" ) then
-  almb = 1
- else
-  almb = 0
- end
- term.clear()
-end
-
- 
  term.clear()
  print("MultiReactOS Setup V1.0")
  print(" ")
