@@ -54,7 +54,6 @@ term.clear()
   fs = require("filesystem")
   print("Installation path and name? E.g.: /home")
   path = tostring(io.read())
-  path = path .. "/" .. programname .. ".lua"
   term.clear()
   print("MultiReactOS Setup V1.0")
  end
@@ -450,6 +449,7 @@ end
   end
   print("EEPROM succesfully written!")
  else
+   path = path .. "/" .. programname .. ".lua"
    local file = io.open(path, "w")
    file:write(script)
    print("Program succesfully written!")
