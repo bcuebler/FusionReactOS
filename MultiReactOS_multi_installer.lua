@@ -247,6 +247,8 @@ end
  if( program == 2 ) then
  programname = "Fusion_RC"
  --Fusion reactor controller
+-- .."Max energy: "..reactor.getMaxEnergyStored().." RF"
+ 
  script = [====[
  sideal = ]====] .. sideal .. [====[
  side = ]====] .. sidersleep .. [====[
@@ -337,13 +339,13 @@ y = 1
 message = "Temperature: "..temp.." K\n"
 .."Problem: "..reactor.getProblem().."\n"
 .."Stored energy: "..reactor.getEnergyStored().." RF".."\n"
-.."First reactor fuel: "..reactor.getFirstFusionFuel().."\n"
-.."Second reactor fuel: "..reactor.getSecondFusionFuel().."\n"
+.."First fuel: "..reactor.getFirstFusionFuel().."\n"
+.."Second fuel: "..reactor.getSecondFusionFuel().."\n"
 .."Energy change: "..reactor.getEnergyChange().." RF/t".."\n"
 .."State: ".. mod .."\n"
 .."Efficiency: "..eff.." %".."\n"
-.."Max temperature: "..maxtemp.." K".."\n"
-.."Max energy: "..reactor.getMaxEnergyStored().." RF"
+.."Max temp: "..maxtemp.." K".."\n"
+
  if(modm == 1) then
   modem.broadcast(port, message)
  end
