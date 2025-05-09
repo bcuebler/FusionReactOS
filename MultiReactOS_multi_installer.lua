@@ -345,7 +345,7 @@ message = "Temperature: "..temp.." K\n"
 .."State: ".. mod .."\n"
 .."Efficiency: "..eff.." %".."\n"
 .."Max temp: "..maxtemp.." K".."\n"
-
+.."Max energy: "..reactor.getMaxEnergyStored().." RF"
  if(modm == 1) then
   modem.broadcast(port, message)
  end
