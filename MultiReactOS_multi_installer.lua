@@ -168,6 +168,9 @@ gpu = component.proxy(component.list("gpu")())
 screen = component.proxy(component.list("screen")())
 modem = component.proxy(component.list("modem")())
 keyboard = component.proxy(component.list("keyboard")())
+if( inst == 0 ) then
+ oldW, oldH = gpu.getResolution()
+end
 
 input = ""
 enbl = 1
@@ -231,8 +234,9 @@ while true do
     end
   end
  
-  if sig == "key_down" then
+  if( sig == "key_down" ) and ( inst == 0 ) then
    gpu.fill(1, 1, 50, count, " ")
+   gpu.setResolution(oldW, oldH)
    break
   end
  
@@ -242,6 +246,7 @@ end
 
  if( program == 2 ) then
  programname = "Fusion_RC"
+ 
  script = [====[
  sideal = ]====] .. sideal .. [====[
  side = ]====] .. sidersleep .. [====[
@@ -257,10 +262,10 @@ end
  inst = ]====] .. inst .. [====[
  
  mod = "nil"
- 
  delaly = 0
 if( inst == 0 ) then
  component = require("component")
+ event = require("event")
 end
  invoke = component.invoke
  computer = component.proxy(component.list("computer")())
@@ -274,6 +279,7 @@ if( scrn == 1 ) then
  component.invoke(gpu, "setResolution", 50, 10)
  component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
  component.invoke(gpu, "set", 1, 1, "Starting")
+ oldW, oldH = gpu.getResolution()
 end
  
 if( modm == 1 ) then
@@ -329,9 +335,19 @@ while true do
    rs.setOutput(outside, 15)
   end
  end
+
+  if( inst == 0 ) then
+ sig, _, _, _, _, msg = event.pull()
+ else
+  sig, _, _, _, _, msg = computer.pullSignal()
+ end
+  if( sig == "key_down" ) and ( inst == 0 ) then
+   gpu.fill(1, 1, 50, count, " ")
+   gpu.setResolution(oldW, oldH)
+   break
+  end
  
  maxtemp = reactor.getMaxTemperature()
-
  delaly = delaly + 1
  if( delaly > dt ) then
   local x = 1
@@ -415,7 +431,6 @@ temp = reactor.getTemperature()
  end
  
  eff = reactor.getEfficiency()
-
  if ( eff > 90 ) and ( switch == true ) and ( rs.getInput(offside) > 0) then
   rs.setOutput(pwro, 15)
  else
