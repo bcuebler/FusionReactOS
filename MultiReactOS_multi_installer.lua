@@ -356,7 +356,7 @@ message = "Temperature: "..temp.." K\n"
 end
   delaly = 0
  end
- if(inst == 0) then
+ if(inst == 0) and (scrn == 1)then
  sig, _, _, _, _, msg = event.pull()
  if(sig == "key_down") then
  component.invoke(gpu, "setResolution", W, H)
