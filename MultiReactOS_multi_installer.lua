@@ -215,8 +215,8 @@ while true do
  if( inst == 0 ) then
   sig, _, _, _, _, msg = event.pull()
    if( sig == "key_down" ) then
-   gpu.fill(1, 1, 50, count, " ")
    gpu.setResolution(oldW, oldH)
+   gpu.fill(1, 1, oldW, oldH, " ")
    break
   end
  else
