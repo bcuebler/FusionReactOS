@@ -271,7 +271,7 @@ end
  computer = component.proxy(component.list("computer")())
  reactor = component.proxy(component.list("nc_fusion_reactor")())
  rs = component.proxy(component.list("redstone")())
-if(scrn == 1) then
+if(scrn == 1) or (inst == 0) then
  gpu = component.list("gpu")()
  screen = component.list("screen")()
  component.invoke(gpu, "bind", screen)
@@ -356,11 +356,11 @@ message = "Temperature: "..temp.." K\n"
 end
   delaly = 0
  end
- if(inst == 0) then
+ if(inst == 0) or (inst == 0) then
  sig, _, _, _, _, msg = event.pull()
  if(sig == "key_down") then
- component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
  component.invoke(gpu, "setResolution", W, H)
+ component.invoke(gpu, "fill", 1, 1, W, H, " ")
   break
  end
 end
