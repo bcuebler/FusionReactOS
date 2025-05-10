@@ -213,7 +213,12 @@ gpu.fill(1, 1, 50, 10, " ")
 
 while true do
  if( inst == 0 ) then
- sig, _, _, _, _, msg = event.pull()
+  sig, _, _, _, _, msg = event.pull()
+   if( sig == "key_down" ) then
+   gpu.fill(1, 1, 50, count, " ")
+   gpu.setResolution(oldW, oldH)
+   break
+  end
  else
   sig, _, _, _, _, msg = computer.pullSignal()
  end
@@ -233,13 +238,6 @@ while true do
       i = i + 1
     end
   end
- 
-  if( sig == "key_down" ) and ( inst == 0 ) then
-   gpu.fill(1, 1, 50, count, " ")
-   gpu.setResolution(oldW, oldH)
-   break
-  end
- 
 end
 ]==]
 end
@@ -359,12 +357,12 @@ end
  end
  if(inst == 0) then
  sig, _, _, _, _, msg = event.pull()
- end
- if(sig == "key_down") and (inst == 0) then
+ if(sig == "key_down") then
  component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
  component.invoke(gpu, "setResolution", W, H)
   break
  end
+end
  if (alert == true) then
   rs.setOutput(sideal, 15)
  reactor.deactivate()
