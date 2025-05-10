@@ -274,10 +274,10 @@ if(scrn == 1) then
  gpu = component.list("gpu")()
  screen = component.list("screen")()
  component.invoke(gpu, "bind", screen)
+ W, H =  component.invoke(gpu, "getResolution")
  component.invoke(gpu, "setResolution", 50, 10)
  component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
  component.invoke(gpu, "set", 1, 1, "Starting")
- W, H =  component.invoke(gpu, "getResolution")
 end
 if(modm == 1) then
  modem = component.proxy(component.list("modem")())
