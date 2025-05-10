@@ -113,7 +113,7 @@ end
 if(( modm == 1 ) or ( scrn == 1 )) then
  print("MultiReactOS-Fusion Setup V1.0")
  print(" ")
- print("Data refresh Speed?")
+ print("Data refresh delay? (sec)")
  dt = tonumber(io.read())
  term.clear()
 end
