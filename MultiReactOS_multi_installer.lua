@@ -227,6 +227,7 @@ while true do
     if( enbl == 1 ) then
      enbl = 0
      _, count = tostring(msg):gsub("\n", "")
+     count = count + 1
      gpu.setResolution(50, count)
     end
     gpu.fill(1, 1, 50, count, " ")
