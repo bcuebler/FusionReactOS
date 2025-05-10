@@ -25,6 +25,7 @@ end
  print("2. Fusion Reactor controller")
  print("3. Fission Reactor controller")
  print("4. Molten Salt Reactor controller")
+ print("5. Geiger Counter reader")
  program = tonumber(io.read())
 term.clear()
  print("MultiReactOS Setup V1.0")
@@ -436,8 +437,106 @@ end
 if( program == 3 ) then
  programname = "MROS_Fission_RC"
 end
+
+
 if( program == 4 ) then
  programname = "MROS_Molten_Salt_RC"
+end
+
+
+if( program == 5 ) then
+ programname = "MROS_geiger_counter"
+ --geiger counter program
+
+ script = [======[
+ inst = ]======] .. inst .. [======[
+ dt =  ]======] .. dt .. [======[
+ port = ]======] .. port .. [======[
+ pport = ]======] .. pport .. [======[
+ scrn = ]======] .. scrn .. [======[
+ modm = ]======] .. modm .. [======[
+
+if(inst == 0) then
+ component = require("component")
+ event = require("event")
+end
+geiger = component.proxy(component.list("nc_geiger_counter")())
+invoke = component.invoke
+ if(scrn == 1) then
+  gpu = component.list("gpu")()
+  screen = component.list("screen")()
+  component.invoke(gpu, "bind", screen)
+  W, H = component.invoke(gpu, "getResolution")
+  component.invoke(gpu, "setResolution", 50, 2)
+  component.invoke(gpu, "fill", 1, 1, 50, 2, " ")
+ end
+ if(modm == 1) then
+  modem = component.proxy(component.list("modem")())
+ end
+ keyboard = component.proxy(component.list("keyboard")())
+
+delaly = 0
+input = ""
+
+if( pport == 0 ) then
+component.invoke(gpu, "set", 1, 1, "Modem port?")
+
+ while true do
+   if( inst == 0 ) and (scrn == 1) then
+     signalType, _, char, code = event.pull()
+   else
+     signalType, _, char, code = computer.pullSignal()
+   end
+
+   if signalType == "key_down" then
+     local c = string.char(char)
+    
+     if c:match("%d") then
+       input = input .. c
+       component.invoke(gpu, "set", 1, 2, input)
+     elseif char == 13 then
+       break
+     elseif char == 8 then
+       input = input:sub(1, -2)
+       component.invoke(gpu, "set", 1, 2, input .. " ")
+     end
+   end
+ end
+ port = tonumber(input)
+end
+
+if(scrn == 1) then
+ component.invoke(gpu, "setResolution", 50, 1)
+ component.invoke(gpu, "fill", 1, 1, 50, 1, " ")
+end
+
+if(modm == 1) then
+ modem.open(tonumber(port))
+end
+
+while true do
+ if(delaly > (dt*100)) then
+  rad = tostring(geiger.getChunkRadiationLevel()).." Rads/t"
+  if(modm == 1) then
+   modem.broadcast(tonumber(port), rad)
+  end
+  if(scrn == 1) then
+   component.invoke(gpu, "set",  1, 1, rad)
+  end
+  delaly = 0
+ end
+delaly = delaly + 1
+
+  if( inst == 0 ) and (scrn == 1) then
+   sig, _, _, _ = event.pull(0)
+   if( sig == "key_down" ) then
+   component.invoke(gpu, "setResolution", W, H)
+   component.invoke(gpu, "fill", 1, 1, W, H, " ")
+   break
+  end
+ end
+end
+]======]
 end
 
 
