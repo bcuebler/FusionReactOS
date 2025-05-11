@@ -310,7 +310,7 @@ while true do
     for line in tostring(msg):gmatch("[^\n]+") do
   local leng = #line
   if leng > lenght then
-    lenght = leng + 1
+    lenght = leng --+ 1
   end
 end
  gpu.setResolution(lenght, count)
