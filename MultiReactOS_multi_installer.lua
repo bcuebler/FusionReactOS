@@ -226,8 +226,6 @@ while true do
  end
  
   if ( sig == "modem_message" ) then
-   -- if( enbl == 1 ) then
-     enbl = 0
      _, count = tostring(msg):gsub("\n", "")
      count = count + 1
 
@@ -239,7 +237,6 @@ while true do
 end
 lenght = lenght + 1
  gpu.setResolution(lenght, count)
-   -- end
     gpu.fill(1, 1, lenght, count, " ")
 
     local i = 1
@@ -367,7 +364,7 @@ end
   delaly = 0
  end
  if(inst == 0) and (scrn == 1)then
- sig, _, _, _, _, msg = event.pull()
+ sig, _, _, _, _, msg = event.pull(0)
  if(sig == "key_down") then
  component.invoke(gpu, "setResolution", W, H)
  component.invoke(gpu, "fill", 1, 1, W, H, " ")
@@ -492,9 +489,9 @@ component.invoke(gpu, "set", 1, 1, "Modem port?")
 
  while true do
    if( inst == 0 ) and (scrn == 1) then
-     signalType, _, char, code = event.pull()
+     signalType, _, char, code = event.pull(0)
    else
-     signalType, _, char, code = computer.pullSignal()
+     signalType, _, char, code = computer.pullSignal(0)
    end
 
    if signalType == "key_down" then
