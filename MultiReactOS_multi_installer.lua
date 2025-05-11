@@ -232,10 +232,9 @@ while true do
     for line in tostring(msg):gmatch("[^\n]+") do
   local leng = #line
   if leng > lenght then
-    lenght = leng
+    lenght = leng + 1
   end
 end
-lenght = lenght + 1
  gpu.setResolution(lenght, count)
     gpu.fill(1, 1, lenght, count, " ")
 
