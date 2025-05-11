@@ -153,8 +153,6 @@ end
 
 --Geiger counter install
 if(program == 5) then
-
- 
   term.clear()
 print("MultiReactOS-Geiger counter Setup V1.0")
 print(" ")
@@ -193,6 +191,7 @@ print(" ")
 print("Modem port?")
  port = tonumber(io.read())
   end
+ end
 term.clear()
   if(( modm == 1 ) or ( scrn == 1 )) then
  print("MultiReactOS-Geiger counter Setup V1.0")
@@ -209,7 +208,17 @@ term.clear()
   print("Readioactivity threshold? (0 for disable)")
    warn = tonumber(io.read())
 
-  
+   term.clear()
+ print("MultiReactOS-Geiger counter Setup V1.0")
+ print(" ")
+ print("Redstone I/O? [Y/n]")
+  red = string.lower(tostring(io.read()))
+   if( red == "y" ) then
+   red = 1
+  else
+   red = 0
+  end
+ 
   if(red == 1) then
  term.clear()
  print("MultiReactOS-Geiger counter Setup V1.0")
@@ -601,7 +610,7 @@ while true do
  if(delaly > (dt*100)) then
   rad = tostring(geiger.getChunkRadiationLevel()).." Rads/t"
  if(geiger.getChunkRadiationLevel() > warn) and (warn > 0) then
-  computer.beep
+  computer.beep(2000, 0.5)
   if(red == 1) then
    rs.setOutput(sideal, 15)
   else
