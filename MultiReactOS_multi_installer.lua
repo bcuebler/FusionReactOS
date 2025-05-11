@@ -175,6 +175,7 @@ end
 
 input = ""
 enbl = 1
+lenght = 0
 
 gpu.bind(screen.address)
 gpu.setResolution(50, 10)
@@ -225,18 +226,26 @@ while true do
  end
  
   if ( sig == "modem_message" ) then
-    if( enbl == 1 ) then
+   -- if( enbl == 1 ) then
      enbl = 0
      _, count = tostring(msg):gsub("\n", "")
      count = count + 1
-     gpu.setResolution(50, count)
-    end
-    gpu.fill(1, 1, 50, count, " ")
+
+    for line in tostring(msg):gmatch("[^\n]+") do
+  local leng = #line
+  if leng > lenght then
+    lenght = leng
+  end
+end
+lenght = lenght + 1
+ gpu.setResolution(lenght, count)
+   -- end
+    gpu.fill(1, 1, lenght, count, " ")
 
     local i = 1
     for line in tostring(msg):gmatch("([^\n]*)\n?") do
       if i > count then break end
-      gpu.set(1, i, line:sub(1, 50))
+      gpu.set(1, i, line:sub(1, lenght))
       i = i + 1
     end
   end
