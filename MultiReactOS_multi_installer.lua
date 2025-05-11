@@ -119,7 +119,6 @@ if(( modm == 1 ) or ( scrn == 1 )) then
  term.clear()
 end
  
- 
  chart()
  print("Please enter the side value for the alarm output side:")
   sideal = tonumber( io.read() )
@@ -150,6 +149,76 @@ end
   almb = 0
  end
  term.clear()
+end
+
+--Geiger counter install
+if(program == 5) then
+
+ 
+  term.clear()
+print("MultiReactOS-Geiger counter Setup V1.0")
+print(" ")
+ print("Direct screen installed? [Y/n]")
+ scrn = string.lower(tostring(io.read()))
+  if( scrn == "y" ) then
+  scrn = 1
+ else
+  scrn = 0
+ end
+term.clear()
+print("MultiReactOS-Geiger counter Setup V1.0")
+print(" ")
+print("Modem installed? [Y/n]")
+ modm = string.lower(tostring(io.read()))
+ if( modm == "y" ) then
+  modm = 1
+ else
+  modm = 0
+ end
+ if ( modm == 1 ) then
+   term.clear()
+ print("MultiReactOS-Geiger counter Setup V1.0")
+ print(" ")
+ print("Predefined modem port? [Y/n]")
+  pport = string.lower(tostring(io.read()))
+   if( pport == "y" ) then
+   pport = 1
+  else
+   pport = 0
+  end
+  if(pport == 1) then
+  term.clear()
+ print("MultiReactOS-Geiger counter Setup V1.0")
+print(" ")
+print("Modem port?")
+ port = tonumber(io.read())
+  end
+term.clear()
+  if(( modm == 1 ) or ( scrn == 1 )) then
+ print("MultiReactOS-Geiger counter Setup V1.0")
+ print(" ")
+ print("Data refresh delay? (sec)")
+ dt = tonumber(io.read())
+ term.clear()
+  else
+   dt = 1
+  end
+ term.clear()
+ print("MultiReactOS-Geiger counter Setup V1.0")
+ print(" ")
+  print("Readioactivity threshold? (0 for disable)")
+   warn = tonumber(io.read())
+
+  
+  if(red == 1) then
+ term.clear()
+ print("MultiReactOS-Geiger counter Setup V1.0")
+ print(" ")
+  chart()
+ print("Please enter the side value for the alarm output side:")
+  sideal = tonumber( io.read() )
+ term.clear()
+  end
 end
 
 
@@ -460,10 +529,19 @@ if( program == 5 ) then
  pport = ]======] .. pport .. [======[
  scrn = ]======] .. scrn .. [======[
  modm = ]======] .. modm .. [======[
+ warn = ]======] .. warn .. [======[
+ red = ]======] .. red .. [======[
+ sideal = ]======] .. sideal .. [======[
 
+--warn = 0 if not warning
+ 
 if(inst == 0) then
  component = require("component")
  event = require("event")
+end
+computer = component.proxy(component.list("computer")())
+if(red == 1) then
+  rs = component.proxy(component.list("redstone")())
 end
 geiger = component.proxy(component.list("nc_geiger_counter")())
 invoke = component.invoke
@@ -522,6 +600,14 @@ end
 while true do
  if(delaly > (dt*100)) then
   rad = tostring(geiger.getChunkRadiationLevel()).." Rads/t"
+ if(geiger.getChunkRadiationLevel() > warn) and (warn > 0) then
+  computer.beep
+  if(red == 1) then
+   rs.setOutput(sideal, 15)
+  else
+   rs.setOutput(sideal, 0)
+  end
+ end
   if(modm == 1) then
    modem.broadcast(tonumber(port), rad)
   end
