@@ -440,7 +440,7 @@ message = "Temperature: "..temp.." K\n"
 end
   delaly = 0
  end
- if(inst == 0) and (scrn == 1)then
+ if(inst == 0) and (scrn == 1) and (1 == 0) then
  sig, _, _, _, _, msg = event.pull(0)
  if(sig == "key_down") then
  component.invoke(gpu, "setResolution", W, H)
@@ -559,11 +559,8 @@ invoke = component.invoke
   screen = component.list("screen")()
   component.invoke(gpu, "bind", screen)
   W, H = component.invoke(gpu, "getResolution")
-  component.invoke(gpu, "setResolution", 50, 2)
-  component.invoke(gpu, "fill", 1, 1, 50, 2, " ")
- if(inst == 0) then
-  keyboard = component.proxy(component.list("keyboard")())
- end
+  component.invoke(gpu, "setResolution", 30, 2)
+  component.invoke(gpu, "fill", 1, 1, 30, 2, " ")
  end
  if(modm == 1) then
   modem = component.proxy(component.list("modem")())
@@ -614,9 +611,9 @@ while true do
   computer.beep(2000, 0.5)
   if(red == 1) then
    rs.setOutput(sideal, 15)
-  else
-   rs.setOutput(sideal, 0)
   end
+ else
+  rs.setOutput(sideal, 0)
  end
   if(modm == 1) then
    modem.broadcast(tonumber(port), rad)
@@ -628,7 +625,7 @@ while true do
  end
 delaly = delaly + 1
 
-  if( inst == 0 ) and (scrn == 1) then
+  if( inst == 0 ) and (scrn == 1) and (1 == 0) then
    sig, _, _, _ = event.pull(0)
    if( sig == "key_down" ) then
    component.invoke(gpu, "setResolution", W, H)
