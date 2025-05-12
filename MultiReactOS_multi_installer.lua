@@ -559,8 +559,8 @@ invoke = component.invoke
   screen = component.list("screen")()
   component.invoke(gpu, "bind", screen)
   W, H = component.invoke(gpu, "getResolution")
-  component.invoke(gpu, "setResolution", 30, 2)
-  component.invoke(gpu, "fill", 1, 1, 30, 2, " ")
+  component.invoke(gpu, "setResolution", 10, 2)
+  component.invoke(gpu, "fill", 1, 1, 10, 2, " ")
  end
  if(modm == 1) then
   modem = component.proxy(component.list("modem")())
@@ -596,8 +596,8 @@ component.invoke(gpu, "set", 1, 1, "Modem port?")
 end
 
 if(scrn == 1) then
- component.invoke(gpu, "setResolution", 50, 1)
- component.invoke(gpu, "fill", 1, 1, 50, 1, " ")
+ component.invoke(gpu, "setResolution", 28, 1)
+ component.invoke(gpu, "fill", 1, 1, 28, 1, " ")
 end
 
 if(modm == 1) then
@@ -619,6 +619,7 @@ while true do
    modem.broadcast(tonumber(port), rad)
   end
   if(scrn == 1) then
+   component.invoke(gpu, "fill", 1, 1, 28, 1, " ")
    component.invoke(gpu, "set",  1, 1, rad)
   end
   delaly = 0
