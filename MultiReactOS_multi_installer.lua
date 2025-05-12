@@ -606,7 +606,9 @@ end
 if(modm == 1) then
  modem.open(tonumber(port))
 end
-
+if(inst == 0) then
+ dt = dt*1000
+end
 while true do
  if(delaly > (dt*100)) then
   rad = tostring(geiger.getChunkRadiationLevel()).." Rads/t"
