@@ -561,6 +561,9 @@ invoke = component.invoke
   W, H = component.invoke(gpu, "getResolution")
   component.invoke(gpu, "setResolution", 10, 2)
   component.invoke(gpu, "fill", 1, 1, 10, 2, " ")
+  if(pport == 0) then
+   keyboard = component.proxy(component.list("keyboard")())
+  end
  end
  if(modm == 1) then
   modem = component.proxy(component.list("modem")())
@@ -568,7 +571,7 @@ invoke = component.invoke
 delaly = 0
 input = ""
 
-if( pport == 0 ) then
+if( pport == 0 ) and (scrn == 1) then
 component.invoke(gpu, "set", 1, 1, "Modem port?")
 
  while true do
