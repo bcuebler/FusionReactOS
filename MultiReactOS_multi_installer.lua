@@ -304,20 +304,35 @@ while true do
  end
  
   if ( sig == "modem_message" ) then
-     _, count = tostring(msg):gsub("\n", "")
-     count = count + 1
+ --    _, count = tostring(msg):gsub("\n", "")
+--     count = count + 1
 
-    for line in tostring(msg):gmatch("[^\n]+") do
-  local leng = #line
-  if leng > lenght then
-    lenght = leng --+ 1
-  end
+ --   for line in tostring(msg):gmatch("[^\n]+") do
+--  local leng = #line
+--  if leng > lenght then
+--    lenght = leng --+ 1
+--  end
+--end
+ 
+ texts = " "
+liness = {}
+for lins in texts:gmatch("[^\n]+") do
+  table.insert(liness, lins)
 end
+
+lenght = liness[1]
+count = liness[2]
+raw = {}
+for i = 3, #liness do
+  table.insert(raw, liness[i])
+end
+othrs = table.concat(raw, "\n")
+ 
  gpu.setResolution(lenght, count)
     gpu.fill(1, 1, lenght, count, " ")
 
     local i = 1
-    for line in tostring(msg):gmatch("([^\n]*)\n?") do
+    for line in tostring(othrs):gmatch("([^\n]*)\n?") do
       if i > count then break end
       gpu.set(1, i, line:sub(1, lenght))
       i = i + 1
