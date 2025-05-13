@@ -247,18 +247,20 @@ gpu = component.proxy(component.list("gpu")())
 screen = component.proxy(component.list("screen")())
 modem = component.proxy(component.list("modem")())
 keyboard = component.proxy(component.list("keyboard")())
+maxW, maxH = gpu.maxResolution()
 if( inst == 0 ) then
  oldW, oldH = gpu.getResolution()
 end
 
 input = ""
 enbl = 1
-lenght = 0
+lenght = 50
+count = 16
 
 gpu.bind(screen.address)
-gpu.setResolution(50, 10)
+gpu.setResolution(12, 2)
 
-gpu.fill(1, 1, 50, 10, " ")
+gpu.fill(1, 1, 12, 2, " ")
 
 if( pport == 0 ) then
 gpu.set(1, 1, "Modem port?")
@@ -289,7 +291,7 @@ end
 
 modem.open(tonumber(port))
 
-gpu.fill(1, 1, 50, 10, " ")
+gpu.fill(1, 1, 12, 2, " ")
 
 while true do
  if( inst == 0 ) then
@@ -300,21 +302,12 @@ while true do
    break
   end
  else
-  sig, _, _, _, _, msg = computer.pullSignal()
+  sig, _, _, mport, _, msg = computer.pullSignal()
  end
  
   if ( sig == "modem_message" ) then
- --    _, count = tostring(msg):gsub("\n", "")
---     count = count + 1
-
- --   for line in tostring(msg):gmatch("[^\n]+") do
---  local leng = #line
---  if leng > lenght then
---    lenght = leng --+ 1
---  end
---end
  
- texts = " "
+ texts = msg
 liness = {}
 for lins in texts:gmatch("[^\n]+") do
   table.insert(liness, lins)
@@ -331,6 +324,10 @@ othrs = table.concat(raw, "\n")
  gpu.setResolution(lenght, count)
     gpu.fill(1, 1, lenght, count, " ")
 
+if(maxW < lenght) or (maxH < count) then
+ error("Max resolution reached")
+end
+ 
     local i = 1
     for line in tostring(othrs):gmatch("([^\n]*)\n?") do
       if i > count then break end
