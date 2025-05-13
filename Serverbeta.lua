@@ -44,11 +44,9 @@ end
 
 
 while true do
- while not (msg1 and msg2) do
-  local _, _, _, port, _, data = e.pullSignal(5)
+  local _, _, _, port, _, data = e.pullSignal(1)
   if port == 528 then msg2 = tostring(data) end
   if port == 529 then msg1 = tostring(data) end
- end
 
 m11, m12 = getFirstTwoNumbers(msg1)
 m21, m22 = getFirstTwoNumbers(msg2)
@@ -67,5 +65,4 @@ _, _, rest2 = splitMessage(msg2)
 combined = line1.."\n"..line2.."\n"..  rest1 .. "\n" .. rest2
 
   m.broadcast(527, combined)
-  e.pullSignal(1) -- kb. 1 másodperc szünet
 end
