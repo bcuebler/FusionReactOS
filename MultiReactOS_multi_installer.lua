@@ -254,8 +254,8 @@ end
 
 input = ""
 enbl = 1
-lenght = maxH
-count = maxW
+lenght = maxW
+count = maxH
 
 gpu.bind(screen.address)
 gpu.setResolution(12, 2)
@@ -324,7 +324,7 @@ othrs = table.concat(raw, "\n")
  gpu.setResolution(lenght, count)
     gpu.fill(1, 1, lenght, count, " ")
 
-if(maxH < lenght) or (maxW < count) then
+if(maxW < lenght) or (maxH < count) then
  error("Max resolution reached")
 end
  
@@ -441,7 +441,7 @@ message = "Temperature: "..temp.." K\n"
 .."Max temp: "..maxtemp.." K".."\n"
 .."Max energy: "..reactor.getMaxEnergyStored().." RF"
  if(modm == 1) then
-  modem.broadcast(port, message)
+  modem.broadcast(port, "50".."\n".."10".."\n"..message)
  end
  if(scrn == 1) then
  component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
@@ -633,7 +633,7 @@ while true do
   rs.setOutput(sideal, 0)
  end
   if(modm == 1) then
-   modem.broadcast(tonumber(port), rad)
+   modem.broadcast(tonumber(port), "28".."\n".."1".."\n"..rad)
   end
   if(scrn == 1) then
    component.invoke(gpu, "fill", 1, 1, 28, 1, " ")
