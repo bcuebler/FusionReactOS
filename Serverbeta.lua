@@ -5,13 +5,8 @@ m.open(528)
 m.open(529)
 m.open(527)
 
-local msg1, msg2
-
-while not (msg1 and msg2) do
-  local _, _, _, port, _, data = e.pullSignal(5)
-  if port == 528 then msg2 = tostring(data) end
-  if port == 529 then msg1 = tostring(data) end
-end
+msg1 = "1".."\n".."1".."\n"
+msg2 = "1".."\n".."1".."\n"
 
 local function getFirstTwoNumbers(msg)
   local sorok = {}
