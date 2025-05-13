@@ -305,7 +305,7 @@ while true do
   sig, _, _, mport, _, msg = computer.pullSignal()
  end
  
-  if ( sig == "modem_message" ) then
+  if ( sig == "modem_message" ) and (mport == port) then
  
  texts = msg
 liness = {}
