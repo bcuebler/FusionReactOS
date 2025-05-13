@@ -254,8 +254,8 @@ end
 
 input = ""
 enbl = 1
-lenght = 50
-count = 16
+lenght = maxH
+count = maxW
 
 gpu.bind(screen.address)
 gpu.setResolution(12, 2)
@@ -324,7 +324,7 @@ othrs = table.concat(raw, "\n")
  gpu.setResolution(lenght, count)
     gpu.fill(1, 1, lenght, count, " ")
 
-if(maxW < lenght) or (maxH < count) then
+if(maxH < lenght) or (maxW < count) then
  error("Max resolution reached")
 end
  
