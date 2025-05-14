@@ -307,7 +307,7 @@ while true do
   end
  else
   sig, _, _, mport, _, msg = computer.pullSignal()
-  if( sig == "key_down" ) then
+  if( sig == "key_down" ) and (pport == 0) then
    break
   end
  end
