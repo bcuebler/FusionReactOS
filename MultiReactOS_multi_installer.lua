@@ -26,7 +26,11 @@ end
  print("3. Fission Reactor controller")
  print("4. Molten Salt Reactor controller")
  print("5. Geiger Counter reader")
+ print("6. Exit")
  program = tonumber(io.read())
+if(program == 6) then
+ break
+end
 term.clear()
  print("MultiReactOS Setup V1.0")
  print(" ")
@@ -671,7 +675,7 @@ end
   eeprom.set(script)
   eeprom.setLabel(programname)
   if ( wrp == 1 ) then
-   eeprom.makeReadonly("mros")
+   eeprom.makeReadonly(eeprom.getChecksum())
   end
   print("EEPROM succesfully written!")
  else
