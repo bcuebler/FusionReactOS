@@ -567,7 +567,9 @@ if( program == 5 ) then
  sideal = ]======] .. sideal .. [======[
 
 --warn = 0 if not warning
- 
+
+state = "nil"
+  
 if(inst == 0) then
  component = require("component")
  event = require("event")
@@ -622,9 +624,11 @@ component.invoke(gpu, "set", 1, 1, "Modem port?")
  port = tonumber(input)
 end
 
+state = "starting..."
+  
 if(scrn == 1) then
- component.invoke(gpu, "setResolution", 28, 1)
- component.invoke(gpu, "fill", 1, 1, 28, 1, " ")
+ component.invoke(gpu, "setResolution", 28, 2)
+ component.invoke(gpu, "fill", 1, 1, 28, 2, " ")
 end
 
 if(modm == 1) then
@@ -633,20 +637,25 @@ end
 
 while true do
  if(delaly > (dt*10000000)) then
-  rad = tostring(geiger.getChunkRadiationLevel()).." Rads/t"
+  rad = tostring(geiger.getChunkRadiationLevel()).." Rads/t".."\n"
+  ..state
  if(geiger.getChunkRadiationLevel() > warn) and (warn > 0) then
   computer.beep(2000, 0.5)
+  state = "Alert"
   if(red == 1) then
    rs.setOutput(sideal, 15)
   end
- elseif(red == 1) then
-  rs.setOutput(sideal, 0)
+ else
+  state = "Normal"
+  if(red == 1) then
+   rs.setOutput(sideal, 0)
+  end
  end
   if(modm == 1) then
-   modem.broadcast(tonumber(port), "28".."\n".."1".."\n"..rad)
+   modem.broadcast(tonumber(port), "28".."\n".."2".."\n"..rad)
   end
   if(scrn == 1) then
-   component.invoke(gpu, "fill", 1, 1, 28, 1, " ")
+   component.invoke(gpu, "fill", 1, 1, 28, 2, " ")
    component.invoke(gpu, "set",  1, 1, rad)
   end
   delaly = 0
