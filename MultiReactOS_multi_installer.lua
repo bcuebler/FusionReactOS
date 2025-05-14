@@ -252,14 +252,14 @@ if( inst == 0 ) then
  oldW, oldH = gpu.getResolution()
 end
 
-debugg == 0
+debugg = 0
  
 while (pport == 0) or (debugg == 0) do
 input = ""
 enbl = 1
 lenght = maxW
 count = maxH
-debugg == 1
+debugg = 1
 
 gpu.bind(screen.address)
 gpu.setResolution(12, 2)
