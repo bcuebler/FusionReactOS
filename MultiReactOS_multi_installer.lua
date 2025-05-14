@@ -626,8 +626,8 @@ end
 if(modm == 1) then
  modem.open(tonumber(port))
 end
-if(inst == 0) then
- dt = dt*1000
+if(inst == 1) then
+ dt = dt*100000
 end
 while true do
  if(delaly > (dt*100)) then
