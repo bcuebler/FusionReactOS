@@ -29,7 +29,7 @@ end
  print("5. Geiger Counter reader")
  print("6. Exit")
  program = tonumber(io.read())
-if(program == 6) then
+if(program < 6) then
 term.clear()
  print("MultiReactOS Setup V1.0")
  print(" ")
