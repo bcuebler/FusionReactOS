@@ -235,7 +235,6 @@ if( program == 1 ) then
  programname = "MROS_Multi_client"
 --client
 script = [==[
- while (inst == 1) do
  pport = ]==] .. pport .. [==[
  port = ]==] .. port .. [==[
  inst = ]==] .. inst .. [==[
@@ -253,6 +252,7 @@ if( inst == 0 ) then
  oldW, oldH = gpu.getResolution()
 end
 
+while (pport == 0) do
 input = ""
 enbl = 1
 lenght = maxW
