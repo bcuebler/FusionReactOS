@@ -153,6 +153,7 @@ end
 
 --Geiger counter install
 if(program == 5) then
+ sideal = 0
   term.clear()
 print("MultiReactOS-Geiger counter Setup V1.0")
 print(" ")
