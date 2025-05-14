@@ -29,8 +29,6 @@ end
  print("6. Exit")
  program = tonumber(io.read())
 if(program == 6) then
- break
-end
 term.clear()
  print("MultiReactOS Setup V1.0")
  print(" ")
@@ -686,4 +684,5 @@ end
    file:close()
  end
  os.sleep(3)
+end
  term.clear()
