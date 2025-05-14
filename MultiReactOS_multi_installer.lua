@@ -661,6 +661,7 @@ while true do
   end
   if(scrn == 1) then
    component.invoke(gpu, "fill", 1, 1, 28, 2, " ")
+  --rendes kiírás "\n" supportal
    component.invoke(gpu, "set",  1, 1, rad)
   end
   delaly = 0
