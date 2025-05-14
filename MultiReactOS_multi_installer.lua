@@ -627,11 +627,9 @@ end
 if(modm == 1) then
  modem.open(tonumber(port))
 end
-if(inst == 1) then
- dt = dt*100000
-end
+
 while true do
- if(delaly > (dt*100)) then
+ if(delaly > (dt*10000000)) then
   rad = tostring(geiger.getChunkRadiationLevel()).." Rads/t"
  if(geiger.getChunkRadiationLevel() > warn) and (warn > 0) then
   computer.beep(2000, 0.5)
