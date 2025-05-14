@@ -235,6 +235,7 @@ if( program == 1 ) then
  programname = "MROS_Multi_client"
 --client
 script = [==[
+ while (inst == 1) do
  pport = ]==] .. pport .. [==[
  port = ]==] .. port .. [==[
  inst = ]==] .. inst .. [==[
@@ -303,6 +304,9 @@ while true do
   end
  else
   sig, _, _, mport, _, msg = computer.pullSignal()
+  if( sig == "key_down" ) then
+   break
+  end
  end
  
   if ( sig == "modem_message" ) and (mport == port) then
@@ -335,6 +339,7 @@ end
       i = i + 1
     end
   end
+end
 end
 ]==]
 end
