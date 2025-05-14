@@ -691,6 +691,9 @@ end
   end
   print("EEPROM succesfully written!")
  else
+   if require("filesystem").get(path).isReadOnly() then
+    error(path.." is readonly")
+   end
    path = path .. "/" .. programname .. ".lua"
    local file = io.open(path, "w")
    file:write(script)
