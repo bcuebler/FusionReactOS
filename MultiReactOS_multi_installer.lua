@@ -47,7 +47,7 @@ term.clear()
   print("Insert an EEPROM to be written THEN continue")
   eeprom = component.eeprom
    print(" ")
-  print("Set EEPROM as read only? [Y/n]")
+  print("Set EEPROM as readonly? [Y/n]")
    wrp = string.lower(tostring(io.read()))
     if( wrp == "y" ) then
     wrp = 1
