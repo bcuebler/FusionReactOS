@@ -16,6 +16,7 @@ end
 
  computer.beep()
  term.clear()
+ dt = 0
  program = 0
  port = 0
  print("MultiReactOS Setup V1.0")
