@@ -638,7 +638,7 @@ while true do
   if(red == 1) then
    rs.setOutput(sideal, 15)
   end
- else
+ elseif(red == 1) then
   rs.setOutput(sideal, 0)
  end
   if(modm == 1) then
