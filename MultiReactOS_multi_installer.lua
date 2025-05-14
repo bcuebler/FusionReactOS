@@ -3,7 +3,7 @@ computer = require("computer")
 term = require("term")
 
 function chart()
- print("FusionReactOS Setup V1.0")
+-- print("FusionReactOS Setup V1.0")
  print(" ")
  print("side chart:")
  print("0 = bottom")
