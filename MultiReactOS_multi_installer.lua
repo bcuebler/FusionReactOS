@@ -660,12 +660,13 @@ while true do
    modem.broadcast(tonumber(port), "28".."\n".."2".."\n"..rad)
   end
   if(scrn == 1) then
+   x = 1
+   y = 1
    component.invoke(gpu, "fill", 1, 1, 28, 2, " ")
-   component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
- for line in string.gmatch(rad, "([^\n]+)") do
-  component.invoke(gpu, "set", x, y, line)
-  y = y + 1
- end
+   for line in string.gmatch(rad, "([^\n]+)") do
+     component.invoke(gpu, "set", x, y, line)
+     y = y + 1
+   end
   end
   delaly = 0
  end
