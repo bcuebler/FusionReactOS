@@ -661,8 +661,11 @@ while true do
   end
   if(scrn == 1) then
    component.invoke(gpu, "fill", 1, 1, 28, 2, " ")
-  --rendes kiírás "\n" supportal
-   component.invoke(gpu, "set",  1, 1, rad)
+   component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
+ for line in string.gmatch(rad, "([^\n]+)") do
+  component.invoke(gpu, "set", x, y, line)
+  y = y + 1
+ end
   end
   delaly = 0
  end
@@ -686,21 +689,62 @@ end
  print(" ")
  print("Writing " .. programname)
  if( inst == 1 ) then
+ content = eeprom.get()
+ content = content:gsub("^%s+", ""):gsub("%s+$", "")
+ if content ~= "" then
+  print("EEPROM is not empty!")
+  print("Overwrite? [Y/n]")
+  ow = string.lower(tostring(io.read()))
+  if (ow == "n") then
+   error("Overwrite aborted by user, file not written")
+  end
+ end
   eeprom.set(script)
   eeprom.setLabel(programname)
   if ( wrp == 1 ) then
-   eeprom.makeReadonly(eeprom.getChecksum())
+   wp = eeprom.makeReadonly(eeprom.getChecksum())
+   if (wp ~= true) then
+    error("Setting EEPROM as readonly: failed")
+   else
+    print("Setting EEPROM as readonly: done")
+   end
   end
-  print("EEPROM succesfully written!")
+  content = eeprom.get()
+  if (content == script) then
+   print("EEPROM succesfully written!")
+  else
+   error("Error writing "..programname..". The EEPROM is readonly or not present")
+  end
  else
    if require("filesystem").get(path).isReadOnly() then
     error(path.." is readonly")
    end
    path = path .. "/" .. programname .. ".lua"
-   local file = io.open(path, "w")
+   file = io.open(path, "w")
+   if fs.exists(path) then
+    print("Another "..programname.." founded in this path")
+    print("Overwrite? [Y/n]")
+    ow = string.lower(tostring(io.read()))
+    if (ow == "n") then
+     error("Overwrite aborted by user, file not written")
+   else
+    print("Overwriting "..programname)
+   end
+   end
+   if file then
    file:write(script)
-   print("Program succesfully written!")
+   data = file:read("*a")
    file:close()
+  if (fs.exists(path) == false) then
+   error("File write error: file not exists")
+  elseif (data == script) then
+   print("Program succesfully written!")
+  else
+   error("File write error: file content not equal with the program")
+  end
+  else
+   error("File cannot be opened")
+  end
  end
  os.sleep(3)
 end
