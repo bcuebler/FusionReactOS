@@ -720,7 +720,7 @@ end
     error(path.." is readonly")
    end
    path = path .. "/" .. programname .. ".lua"
-   file = io.open(path, "w")
+   file = io.open(path, "r")
    if fs.exists(path) then
     print("Another "..programname.." founded in this path")
     print("Overwrite? [Y/n]")
@@ -728,6 +728,7 @@ end
     if (ow == "n") then
      error("Overwrite aborted by user, file not written")
    else
+    file = io.open(path, "w")
     print("Overwriting "..programname)
    end
    end
