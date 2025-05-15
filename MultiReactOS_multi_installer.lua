@@ -3,7 +3,6 @@ computer = require("computer")
 term = require("term")
 
 function chart()
- print(" ")
  print("side chart:")
  print("0 = bottom")
  print("1 = top")
@@ -184,6 +183,7 @@ print("Modem installed? [Y/n]")
  end
  if ( modm == 1 ) then
    term.clear()
+   --on go editable modem port take out
  print("MultiReactOS-Geiger counter Setup V1.0")
  print(" ")
  print("Predefined modem port? [Y/n]")
