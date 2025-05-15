@@ -1,5 +1,7 @@
 --[ here a description ]--
 
+
+--[ To Do list ]--
 - [ ] 6. option: help and info
 - [ ] Geiger counter program no predefinied port mode delete
 - [x] Fusion reactor controller
