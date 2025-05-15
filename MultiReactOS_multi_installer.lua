@@ -693,11 +693,14 @@ end
  content = eeprom.get()
  content = content:gsub("^%s+", ""):gsub("%s+$", "")
  if content ~= "" then
+  computer.beep(2000, 0.5)
   print("EEPROM is not empty!")
   print("Overwrite? [Y/n]")
   ow = string.lower(tostring(io.read()))
   if (ow == "n") then
    error("Overwrite aborted by user, file not written")
+  else
+   print("Overwriting")
   end
  end
   eeprom.set(script)
@@ -722,6 +725,7 @@ end
    end
    path = path .. "/" .. programname .. ".lua"
    if fs.exists(path) then
+    computer.beep(2000, 0.5)
     print("Another "..programname.." founded in this path")
     print("Overwrite? [Y/n]")
     ow = string.lower(tostring(io.read()))
