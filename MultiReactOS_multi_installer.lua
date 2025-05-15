@@ -579,7 +579,7 @@ if(inst == 0) then
  component = require("component")
  event = require("event")
 end
-computer = component.proxy(component.list("computer")())
+ccomputer = component.proxy(component.list("computer")())
 if(red == 1) then
   rs = component.proxy(component.list("redstone")())
 end
@@ -645,7 +645,7 @@ while true do
   rad = tostring(geiger.getChunkRadiationLevel()).." Rads/t".."\n"
   ..state
  if(geiger.getChunkRadiationLevel() > warn) and (warn > 0) then
-  computer.beep(2000, 0.5)
+  ccomputer.beep(2000, 0.5)
   state = "Alert"
   if(red == 1) then
    rs.setOutput(sideal, 15)
