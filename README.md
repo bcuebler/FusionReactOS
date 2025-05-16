@@ -13,7 +13,7 @@
 - [ ] Multi connect transreciver server for clients(in beta testing)
 
 --[ Known bugs (i put an x to the bug if i work on it) ]--
-- [ ] Geiger counter program no predefinied port mode keyboard error
+- [x] Geiger counter program no predefinied port mode keyboard error
 
 Here is the link for the Reactor controller server installer (old version, i will not update this):
 ```
