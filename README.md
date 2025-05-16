@@ -12,6 +12,9 @@
 - [ ] Turbine controller
 - [ ] Multi connect transreciver server for clients(in beta testing)
 
+--[ Known bugs (i put an x to the bug if i work on it) ]--
+- [ ] Geiger counter program no predefinied port mode keyboard error
+
 Here is the link for the Reactor controller server installer (old version, i will not update this):
 ```
 wget -f https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/NCROS_installer.lua /bin/MROS_installer.lua
