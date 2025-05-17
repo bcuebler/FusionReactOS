@@ -13,11 +13,13 @@
 - [ ] Heat exchanger controller
 - [ ] Turbine controller
 - [ ] Multi connect transreciver server for clients(in beta testing)
+- [ ] adding server to installer
 
 
 
 --[ Known bugs (i mark the bug if i work on it) ]--
 - [ ] Geiger counter under 100 urads/t bad reading, or displaying
+- [ ] fusion reactor over heat preventing controll fixed and not working very well
 
 
 
@@ -47,15 +49,16 @@
 - [x] geiger controller
 - [ ] help function
 - [ ] server
+- [x] fusion reactor over heat preventing controll -> flexible controll
 
 
 
-Here is the link for the Reactor controller server installer (old version, i will not update this):
+Here is the link for the Reactor controller server installer (old version, i will not update this, and after i done with the development i will delete it):
 ```
 wget -f https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/NCROS_installer.lua /bin/MROS_installer.lua
 ```
 
-And for the client installer (old version, i will not update this):
+And for the client installer (old version, i will not update this, and after i done with the development i will delete it):
 ```
 wget -f https://raw.githubusercontent.com/bcuebler/FusionReactOS/main/MultiReactOS_client_installer.lua /tmp/MROS_client_installer.lua && /tmp/MROS_client_installer.lua
 ```
