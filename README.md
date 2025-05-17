@@ -1,4 +1,4 @@
---[ here a description ]--
+--[ here a description (i start to write it after 1 week and some days) ]--
 
 
 --[ To Do list ]--
@@ -14,7 +14,30 @@
 
 --[ Known bugs (i mark the bug if i work on it) ]--
 - [ ] Geiger counter under 100 urads/t bad reading, or displaying
-- [ ] help/info button also an exit(instant)
+
+
+--[ Functions ]--
+- [x] Multi client installer
+- [x] Fusion ReactOS installer
+- [x] Geiger counter installer(with some bugs)
+
+--[ testing ]--
+- [x] Multi client
+- [x] Fusion reactor controller
+- [ ] fission reactor controller
+- [ ] molten salt utilitys controller
+- [x] geiger controller
+- [x] help function
+- [x] server
+
+--[ dev ]--
+- [ ] Multi client
+- [x] Fusion reactor controller
+- [ ] fission reactor controller
+- [ ] molten salt utilitys controller
+- [x] geiger controller
+- [ ] help function
+- [ ] server
 
 Here is the link for the Reactor controller server installer (old version, i will not update this):
 ```
