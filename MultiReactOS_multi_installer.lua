@@ -32,8 +32,8 @@ end
  program = tonumber(io.read())
 if(program == 6) then
  term.clear()
- print("--[ help/info text here ]--")
-  _, = event.pull("keydown")
+ print("- help/info text here -")
+ event.pull("key_down")
 end
 if(program < 6) then
 term.clear()
@@ -194,7 +194,6 @@ print("Modem installed? [Y/n]")
 print(" ")
 print("Modem port?")
  port = tonumber(io.read())
-  end
  end
 term.clear()
   if(( modm == 1 ) or ( scrn == 1 )) then
@@ -724,6 +723,6 @@ end
  end
  print(" ")
  print("Press any key to exit")
- _, = event.pull("keydown")
+ event.pull("key_down")
 end
  term.clear()
