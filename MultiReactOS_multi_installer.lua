@@ -26,8 +26,13 @@ end
  print("3. Fission Reactor controller")
  print("4. Molten Salt Reactor controller")
  print("5. Geiger Counter reader")
- print("6. Exit")
+ print("6. Help / info")
+ print("7. Exit")
  program = tonumber(io.read())
+if(program == 6) then
+ term.clear()
+ print("--[ help/info text here ]--")
+end
 if(program < 6) then
 term.clear()
  print("MultiReactOS Setup V1.0")
