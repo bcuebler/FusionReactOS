@@ -33,7 +33,7 @@ end
 if(program == 6) then
  term.clear()
  print("--[ help/info text here ]--")
- event.pull("keydown")
+  _, = event.pull("keydown")
 end
 if(program < 6) then
 term.clear()
@@ -724,6 +724,6 @@ end
  end
  print(" ")
  print("Press any key to exit")
- event.pull("keydown")
+ _, = event.pull("keydown")
 end
  term.clear()
