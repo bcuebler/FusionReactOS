@@ -13,7 +13,8 @@
 - [ ] Multi connect transreciver server for clients(in beta testing)
 
 --[ Known bugs (i mark the bug if i work on it) ]--
-- [x] Geiger counter under 100 urads/t bad reading, or displaying
+- [ ] Geiger counter under 100 urads/t bad reading, or displaying
+- [ ] help/info button also an exit(instant)
 
 Here is the link for the Reactor controller server installer (old version, i will not update this):
 ```
