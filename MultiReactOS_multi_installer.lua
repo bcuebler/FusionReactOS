@@ -1,6 +1,7 @@
 component = require("component")
 computer = require("computer")
 term = require("term")
+event = require("event")
 
 function chart()
  print("side chart:")
@@ -32,6 +33,7 @@ end
 if(program == 6) then
  term.clear()
  print("--[ help/info text here ]--")
+ event.pull("keydown")
 end
 if(program < 6) then
 term.clear()
@@ -720,6 +722,8 @@ end
    error("File cannot be opened")
   end
  end
- os.sleep(3)
+ print(" ")
+ print("Press any key to exit")
+ event.pull("keydown")
 end
  term.clear()
