@@ -1,6 +1,8 @@
 --[ here a description (i start to write it after 1 week and some days) ]--
 
 
+
+
 --[ To Do list ]--
 - [ ] 6. option: help and info
 - [x] Geiger counter program no predefinied port mode delete
@@ -12,14 +14,19 @@
 - [ ] Turbine controller
 - [ ] Multi connect transreciver server for clients(in beta testing)
 
+
+
 --[ Known bugs (i mark the bug if i work on it) ]--
 - [ ] Geiger counter under 100 urads/t bad reading, or displaying
+
 
 
 --[ Functions ]--
 - [x] Multi client installer
 - [x] Fusion ReactOS installer
 - [x] Geiger counter installer(with some bugs)
+
+
 
 --[ testing ]--
 - [x] Multi client
@@ -30,6 +37,8 @@
 - [x] help function
 - [x] server
 
+
+
 --[ dev ]--
 - [ ] Multi client
 - [x] Fusion reactor controller
@@ -38,6 +47,8 @@
 - [x] geiger controller
 - [ ] help function
 - [ ] server
+
+
 
 Here is the link for the Reactor controller server installer (old version, i will not update this):
 ```
