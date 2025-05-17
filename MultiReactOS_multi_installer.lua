@@ -255,7 +255,9 @@ end
 gpu = component.proxy(component.list("gpu")())
 screen = component.proxy(component.list("screen")())
 modem = component.proxy(component.list("modem")())
-keyboard = component.proxy(component.list("keyboard")())
+if(pport == 0) then
+ keyboard = component.proxy(component.list("keyboard")())
+end
 maxW, maxH = gpu.maxResolution()
 if( inst == 0 ) then
  oldW, oldH = gpu.getResolution()
