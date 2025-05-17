@@ -183,18 +183,6 @@ print("Modem installed? [Y/n]")
  end
  if ( modm == 1 ) then
    term.clear()
-   --on go editable modem port take out
- print("MultiReactOS-Geiger counter Setup V1.0")
- print(" ")
- print("Predefined modem port? [Y/n]")
-  pport = string.lower(tostring(io.read()))
-   if( pport == "y" ) then
-   pport = 1
-  else
-   pport = 0
-  end
-  if(pport == 1) then
-  term.clear()
  print("MultiReactOS-Geiger counter Setup V1.0")
 print(" ")
 print("Modem port?")
@@ -566,7 +554,6 @@ if( program == 5 ) then
  inst = ]======] .. inst .. [======[
  dt = ]======] .. dt .. [======[
  port = ]======] .. port .. [======[
- pport = ]======] .. pport .. [======[
  scrn = ]======] .. scrn .. [======[
  modm = ]======] .. modm .. [======[
  warn = ]======] .. warn .. [======[
@@ -594,42 +581,11 @@ invoke = component.invoke
   W, H = component.invoke(gpu, "getResolution")
   component.invoke(gpu, "setResolution", 10, 2)
   component.invoke(gpu, "fill", 1, 1, 10, 2, " ")
-  if(pport == 0) then
-   keyboard = component.proxy(component.list("keyboard")())
-  end
  end
  if(modm == 1) then
   modem = component.proxy(component.list("modem")())
  end
 delaly = 0
-input = ""
-
-if( pport == 0 ) and (scrn == 1) then
-component.invoke(gpu, "set", 1, 1, "Modem port?")
-
- while true do
-   if( inst == 0 ) and (scrn == 1) then
-     signalType, _, char, code = event.pull(0)
-   else
-     signalType, _, char, code = computer.pullSignal(0)
-   end
-
-   if signalType == "key_down" then
-     local c = string.char(char)
-    
-     if c:match("%d") then
-       input = input .. c
-       component.invoke(gpu, "set", 1, 2, input)
-     elseif char == 13 then
-       break
-     elseif char == 8 then
-       input = input:sub(1, -2)
-       component.invoke(gpu, "set", 1, 2, input .. " ")
-     end
-   end
- end
- port = tonumber(input)
-end
 
 state = "starting..."
   
