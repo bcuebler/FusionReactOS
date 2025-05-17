@@ -3,7 +3,7 @@
 
 --[ To Do list ]--
 - [ ] 6. option: help and info
-- [ ] Geiger counter program no predefinied port mode delete
+- [x] Geiger counter program no predefinied port mode delete
 - [x] Fusion reactor controller
 - [x] Multi client
 - [ ] Fission reactor controller
@@ -13,7 +13,7 @@
 - [ ] Multi connect transreciver server for clients(in beta testing)
 
 --[ Known bugs (i mark the bug if i work on it) ]--
-- [x] Geiger counter program no predefinied port mode keyboard error
+- [x] Geiger counter under 100 urads/t bad reading, or displaying
 
 Here is the link for the Reactor controller server installer (old version, i will not update this):
 ```
