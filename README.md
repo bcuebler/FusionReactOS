@@ -14,6 +14,7 @@
 - [ ] Turbine controller
 - [ ] Multi connect transreciver server for clients(in beta testing)
 - [ ] adding server to installer
+- [ ] adding radiation (scrambler)?? ... i don't remember...
 
 
 
