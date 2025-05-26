@@ -21,6 +21,7 @@
 --[ Known bugs (i mark the bug if i work on it) ]--
 - [ ] Geiger counter under 100 urads/t bad reading, or displaying
 - [ ] fusion reactor over heat preventing controll fixed and not working very well
+- [x] Multi client start with a "trying to compare with a nil value error" and reboot will fix it
 
 
 
