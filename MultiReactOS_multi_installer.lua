@@ -304,7 +304,7 @@ gpu.fill(1, 1, 12, 2, " ")
 
 while true do
  if( inst == 0 ) then
-  sig, _, _, _, _, msg = event.pull()
+  sig, _, _, mport, _, msg = event.pull()
    if( sig == "key_down" ) then
    gpu.setResolution(oldW, oldH)
    gpu.fill(1, 1, oldW, oldH, " ")
