@@ -33,7 +33,6 @@
 
 
 --[ testing ]--
-- [x] Multi client
 - [x] Fusion reactor controller
 - [ ] fission reactor controller
 - [ ] molten salt utilitys controller
@@ -44,7 +43,6 @@
 
 
 --[ dev ]--
-- [ ] Multi client
 - [x] Fusion reactor controller
 - [ ] fission reactor controller
 - [ ] molten salt utilitys controller
