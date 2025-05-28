@@ -511,7 +511,7 @@ temp = reactor.getTemperature()
    mod = "Off"
   end
  end
- if (temp > maxtemp) or (electromagnetsPowered()) then
+ if (temp > (maxtemp - 100)) or (electromagnetsPowered()) then
   alert = true
  end
  if ( switch == false ) then
