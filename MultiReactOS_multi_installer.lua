@@ -427,10 +427,12 @@ mod = "Starting"
 while true do
  if (rs.getInput(side) < 1) or (electromagnetsPowered()) then
   rs.setOutput(outside, 15)
+  if electromagnetsPowered() then
   repeat
    reactor.deactivate()
    sleep(1)
   until (false == electromagnetsPowered())
+ end
  else
   if ( eff > 0.9999 ) then
    rs.setOutput(outside, 0)
@@ -493,6 +495,7 @@ end
  else
   reactor.deactivate()
  end
+eff = reactor.getEfficiency()
 temp = reactor.getTemperature()
  if (eff > 1) and (switch == false) then
   preheat = 0
@@ -523,7 +526,6 @@ temp = reactor.getTemperature()
     end
   end
  end
- eff = reactor.getEfficiency()
  if (eff > 90) and (switch == true) and (rs.getInput(offside) > 0) then
   rs.setOutput(pwro, 15)
  else
@@ -532,9 +534,6 @@ temp = reactor.getTemperature()
  if (eff > 99.999) and (switch == true) then
   enable = 0
  else
-  enable = 1
- end
- if (switch == false) then
   enable = 1
  end
 end
