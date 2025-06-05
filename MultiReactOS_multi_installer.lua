@@ -434,7 +434,7 @@ while true do
   until (false == electromagnetsPowered())
  end
  else
-  if ( eff > 0.9999 ) then
+  if ( eff > 60 ) then
    rs.setOutput(outside, 0)
   else
    rs.setOutput(outside, 15)
@@ -497,7 +497,7 @@ end
  end
 eff = reactor.getEfficiency()
 temp = reactor.getTemperature()
- if (eff > 60) and (switch == false) then
+ if (eff > 65) and (switch == false) then
   preheat = 0
  else
   preheat = 1
