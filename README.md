@@ -20,7 +20,6 @@
 
 --[ Known bugs (i mark the bug if i work on it) ]--
 - [ ] Geiger counter under 100 urads/t bad reading, or displaying
-- [ ] fusion reactor over heat preventing controll fixed and not working very well
 - [x] Multi client start with a "trying to compare with a nil value error" and reboot will fix it
 
 
@@ -33,8 +32,7 @@
 
 
 --[ testing ]--
-- [x] Fusion reactor controller
-- [ ] fission reactor controller
+- [x] fission reactor controller
 - [ ] molten salt utilitys controller
 - [x] geiger controller
 - [x] help function
@@ -43,13 +41,11 @@
 
 
 --[ dev ]--
-- [x] Fusion reactor controller
-- [ ] fission reactor controller
+- [x] fission reactor controller
 - [ ] molten salt utilitys controller
 - [x] geiger controller
 - [ ] help function
 - [ ] server
-- [x] fusion reactor over heat preventing controll -> flexible controll
 
 
 
