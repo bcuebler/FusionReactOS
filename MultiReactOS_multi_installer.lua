@@ -497,7 +497,7 @@ end
  end
 eff = reactor.getEfficiency()
 temp = reactor.getTemperature()
- if (eff > 1) and (switch == false) then
+ if (eff > 60) and (switch == false) then
   preheat = 0
  else
   preheat = 1
