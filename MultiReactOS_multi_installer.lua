@@ -62,7 +62,7 @@ term.clear()
    end
  else
   fs = require("filesystem")
-  print("Installation path and name? E.g.: /home/MROS.lua")
+  print("Installation path? E.g.: /home")
   path = tostring(io.read())
   term.clear()
   print("MultiReactOS Setup V1.0")
