@@ -387,12 +387,10 @@ if(scrn == 1) then
  W, H =  component.invoke(gpu, "getResolution")
  component.invoke(gpu, "setResolution", 50, 10)
  component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
- component.invoke(gpu, "set", 1, 1, "Starting")
 end
 if(modm == 1) then
  modem = component.proxy(component.list("modem")())
  modem.open(port)
- modem.broadcast(port, "Port: ".. port .. "started!")
  if(modem.isOpen(port) == false) then
   repeat
    computer.beep(2000, 0.5)
@@ -406,17 +404,17 @@ end
  b = 0
  rs.setOutput(pwro, 0)
  eff = 0
-function electromagnetsPowered()
-   problem = reactor.getProblem()
-  return problem == "E-magnets not Powered"
+function elm()
+   prob = reactor.getProblem()
+  return prob == "E-magnets not Powered"
 end
 function sleep(delay)
  repeat
- b = ( b + 1 )
+ b = b+1
  until b == (delay * 10)
  b = 0
 end
-computer.beep(1000, 0.1)
+
 if (almb == 1) then
  rs.setOutput(sideal, 15)
  sleep(0.1)
@@ -425,16 +423,16 @@ end
  rs.setOutput(sideal, 0)
 mod = "Starting"
 while true do
- if (rs.getInput(side) < 1) or (electromagnetsPowered()) then
+ if (rs.getInput(side) < 1) or (elm()) then
   rs.setOutput(outside, 15)
-  if electromagnetsPowered() then
+  if elm() then
   repeat
    reactor.deactivate()
    sleep(1)
-  until (false == electromagnetsPowered())
+  until (false == elm())
  end
  else
-  if ( engst > 6000000 ) then
+  if (engst > 6000000) then
    rs.setOutput(outside, 0)
   else
    rs.setOutput(outside, 15)
@@ -447,14 +445,13 @@ while true do
 x = 1
 y = 1
 message = "Temperature: "..temp.." K\n"
-.."Problem: "..reactor.getProblem().."\n"
+.."Problem: "..prob.."\n"
 .."Stored energy: "..engst.." RF".."\n"
 .."First fuel: "..reactor.getFirstFusionFuel().."\n"
 .."Second fuel: "..reactor.getSecondFusionFuel().."\n"
-.."Energy change: "..reactor.getEnergyChange().." RF/t".."\n"
 .."State: ".. mod .."\n"
-.."Efficiency: "..eff.." %".."\n"
 .."Max temp: "..maxtemp.." K".."\n"
+.."Efficiency: "..eff.." %".."\n"
 .."Max energy: "..reactor.getMaxEnergyStored().." RF"
  if(modm == 1) then
   modem.broadcast(port, "50".."\n".."10".."\n"..message)
@@ -512,12 +509,12 @@ temp = reactor.getTemperature()
    mod = "Off"
   end
  end
- if (temp > (maxtemp - 100)) or (electromagnetsPowered()) then
+ if (temp > (maxtemp - 100)) or (elm()) then
   alert = true
  end
- if ( switch == false ) then
-  a = ( a + 1 )
-  if ( a > 45 ) then
+ if (switch == false) then
+  a = a+1
+  if (a > 45) then
    a = 0
     computer.beep()
      if (almb == 1) then
