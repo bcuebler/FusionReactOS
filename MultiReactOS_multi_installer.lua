@@ -423,6 +423,7 @@ end
  rs.setOutput(sideal, 0)
 mod = "Starting"
 while true do
+ engst = reactor.getEnergyStored()
  if (rs.getInput(side) < 1) or (elm()) then
   rs.setOutput(outside, 15)
   if elm() then
@@ -438,7 +439,6 @@ while true do
    rs.setOutput(outside, 15)
   end
  end
- engst = reactor.getEnergyStored()
  maxtemp = reactor.getMaxTemperature()
  delaly = delaly + 1
  if(delaly > dt) then
