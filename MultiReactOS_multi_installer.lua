@@ -385,8 +385,8 @@ if(scrn == 1) then
  screen = component.list("screen")()
  component.invoke(gpu, "bind", screen)
  W, H =  component.invoke(gpu, "getResolution")
- component.invoke(gpu, "setResolution", 50, 10)
- component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
+ component.invoke(gpu, "setResolution", 50, 9)
+ component.invoke(gpu, "fill", 1, 1, 50, 9, " ")
 end
 if(modm == 1) then
  modem = component.proxy(component.list("modem")())
@@ -439,6 +439,8 @@ while true do
    rs.setOutput(outside, 15)
   end
  end
+ eff = reactor.getEfficiency()
+ temp = reactor.getTemperature()
  maxtemp = reactor.getMaxTemperature()
  delaly = delaly + 1
  if(delaly > dt) then
@@ -454,10 +456,10 @@ message = "Temperature: "..temp.." K\n"
 .."Efficiency: "..eff.." %".."\n"
 .."Max energy: "..reactor.getMaxEnergyStored().." RF"
  if(modm == 1) then
-  modem.broadcast(port, "50".."\n".."10".."\n"..message)
+  modem.broadcast(port, "50".."\n".."9".."\n"..message)
  end
  if(scrn == 1) then
- component.invoke(gpu, "fill", 1, 1, 50, 10, " ")
+ component.invoke(gpu, "fill", 1, 1, 50, 9, " ")
  for line in string.gmatch(message, "([^\n]+)") do
   component.invoke(gpu, "set", x, y, line)
   y = y + 1
@@ -493,8 +495,6 @@ end
  else
   reactor.deactivate()
  end
-eff = reactor.getEfficiency()
-temp = reactor.getTemperature()
  if (engst > 5999900) and (switch == false) then
   preheat = 0
  else
