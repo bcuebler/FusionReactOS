@@ -434,12 +434,13 @@ while true do
   until (false == electromagnetsPowered())
  end
  else
-  if ( eff > 60 ) then
+  if ( engst > 6000000 ) then
    rs.setOutput(outside, 0)
   else
    rs.setOutput(outside, 15)
   end
  end
+ engst = reactor.getEnergyStored()
  maxtemp = reactor.getMaxTemperature()
  delaly = delaly + 1
  if(delaly > dt) then
@@ -447,7 +448,7 @@ x = 1
 y = 1
 message = "Temperature: "..temp.." K\n"
 .."Problem: "..reactor.getProblem().."\n"
-.."Stored energy: "..reactor.getEnergyStored().." RF".."\n"
+.."Stored energy: "..engst.." RF".."\n"
 .."First fuel: "..reactor.getFirstFusionFuel().."\n"
 .."Second fuel: "..reactor.getSecondFusionFuel().."\n"
 .."Energy change: "..reactor.getEnergyChange().." RF/t".."\n"
@@ -497,7 +498,7 @@ end
  end
 eff = reactor.getEfficiency()
 temp = reactor.getTemperature()
- if (eff > 65) and (switch == false) then
+ if (engst > 5999900) and (switch == false) then
   preheat = 0
  else
   preheat = 1
@@ -526,12 +527,12 @@ temp = reactor.getTemperature()
     end
   end
  end
- if (eff > 90) and (switch == true) and (rs.getInput(offside) > 0) then
+ if (engst > 6000000) and (switch == true) and (rs.getInput(offside) > 0) then
   rs.setOutput(pwro, 15)
  else
   rs.setOutput(pwro, 0)
  end
- if (eff > 99.999) and (switch == true) then
+ if (eff > 99.99999) and (switch == true) then
   enable = 0
  else
   enable = 1
