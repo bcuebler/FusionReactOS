@@ -20,9 +20,9 @@
 
 
 
---[ Known bugs (i mark the bug if i work on it) ]--
+--[ Known bugs (i mark the bug it's fixed) ]--
 - [ ] Geiger counter under 100 urads/t bad reading, or displaying
-- [x] Multi client start with a "trying to compare with a nil value error" and reboot will fix it
+- [ ] Multi client start with a "trying to compare with a nil value error" and reboot will fix it
 
 
 
