@@ -17,6 +17,7 @@
 - [ ] Multi connect transreciver server for clients(in beta testing)
 - [ ] adding server to installer
 - [ ] adding radiation scrubber
+- [ ] Make a more nice README
 
 
 
