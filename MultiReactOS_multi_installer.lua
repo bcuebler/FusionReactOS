@@ -233,7 +233,11 @@ end
 
 
 if( program == 1 ) then
- programname = "MROS_Multi_client"
+ if( inst == 1 ) then 
+  programname = "MROS_Multi_client"
+ else
+   programname = "MROSC"
+ end
 --client
 script = [==[
  pport = ]==] .. pport .. [==[
@@ -351,7 +355,11 @@ end
 end
 
  if( program == 2 ) then
- programname = "Fusion_RC"
+ if( inst == 1 ) then 
+  programname = "MROS_Fusion_RC"
+ else
+   programname = "MROSFURC"
+ end
  --Fusion reactor controller
  
  script = [====[
@@ -538,7 +546,11 @@ end
 
 
 if( program == 3 ) then
- programname = "MROS_Fission_RC"
+ if( inst == 1 ) then 
+   programname = "MROS_Fission_RC"
+ else
+   programname = "MROSFIRC"
+ end
   print(" ")
   print("This code hasn't been written yet")
  if ( fs == nil ) then
@@ -554,7 +566,11 @@ end
 
 
 if( program == 4 ) then
- programname = "MROS_Molten_Salt_RC"
+ if( inst == 1 ) then 
+   programname = "MROS_Molten_Salt_RC"
+ else
+   programname = "MROSMSRC"
+ end
   print(" ")
   print("This code hasn't been written yet")
  if ( fs == nil ) then
@@ -570,7 +586,11 @@ end
 
 
 if( program == 5 ) then
- programname = "MROS_geiger_counter"
+ if( inst == 1 ) then 
+   programname = "MROS_geiger_counter"
+ else
+   programname = "MROSGC"
+ end
  --geiger counter program
 
  script = [======[
