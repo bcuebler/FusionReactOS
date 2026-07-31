@@ -2,8 +2,14 @@
 
 --[ here a description (i start to write it after 1 week and some days) ]--
 
-
-
+--[ Hardware requirements ]--
+ - tier 1 ram or more
+ - tier 1 cpu or higher
+ - tier 1 gpu  or higher (program-dependent)
+ - tier 1 (or higher) wireless or normal network card (program-dependent)
+ - tier 1 screen or higher (program-dependent)
+ - external or internal redstone i/o (card or block) tier 1 or higher (program-dependent)
+ - reactor or geiger counter block from nuclear craft (except if you install the client program)
 
 --[ To Do list ]--
 - [ ] 6. option: help and info
