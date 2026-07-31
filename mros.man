@@ -1,0 +1,11 @@
+NAME
+    mros - Multi installer for MultiReactOS
+
+SYNOPSYS
+    mros [parancs] [opciók]
+
+DESCRIPTION
+    
+    
+AUTHOR
+    bcuebler (https://github.com/bcuebler/FusionReactOS/tree/main)
