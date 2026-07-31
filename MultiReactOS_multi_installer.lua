@@ -722,7 +722,7 @@ end
  print("Press any key to exit")
  event.pull("key_down")
 end
- if fs = nil then
+ if fs == nil then
   fs = require("filesystem")
  end
  if fs.exists("/tmp/MultiReactOS_multi_installer.lua") then
