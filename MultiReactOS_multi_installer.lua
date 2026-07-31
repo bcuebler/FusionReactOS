@@ -51,7 +51,6 @@ term.clear()
  print(" ")
   if( inst == 1 ) then
   print("Insert an EEPROM to be written THEN continue")
-  eeprom = component.eeprom
    print(" ")
   print("Set EEPROM as readonly? [Y/n]")
    wrp = string.lower(tostring(io.read()))
@@ -61,7 +60,6 @@ term.clear()
     wrp = 0
    end
  else
-  fs = require("filesystem")
   print("Installation path? E.g.: /home")
   path = tostring(io.read())
   term.clear()
@@ -651,6 +649,7 @@ end
  print(" ")
  print("Writing " .. programname)
  if( inst == 1 ) then
+ eeprom = component.eeprom
  content = eeprom.get()
  content = content:gsub("^%s+", ""):gsub("%s+$", "")
  if content ~= "" then
@@ -681,6 +680,7 @@ end
    error("Error writing "..programname..". The EEPROM is readonly or not present")
   end
  else
+   fs = require("filesystem")
    if require("filesystem").get(path).isReadOnly() then
     error(path.." is readonly")
    end
@@ -722,4 +722,7 @@ end
  print("Press any key to exit")
  event.pull("key_down")
 end
+ if fs.exists("/tmp/MultiReactOS_multi_installer.lua") then
+   fs.remove("/tmp/MultiReactOS_multi_installer.lua")
+ end
  term.clear()
