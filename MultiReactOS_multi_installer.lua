@@ -539,11 +539,17 @@ end
 
 if( program == 3 ) then
  programname = "MROS_Fission_RC"
+  print(" ")
+  print("This code hasn't been written yet")
+  os.exit()
 end
 
 
 if( program == 4 ) then
  programname = "MROS_Molten_Salt_RC"
+  print(" ")
+  print("This code hasn't been written yet")
+  os.exit()
 end
 
 
@@ -722,7 +728,7 @@ end
  print("Press any key to exit")
  event.pull("key_down")
 end
- if (fs == nil) then
+ if ( fs == nil ) then
   fs = require("filesystem")
  end
  if fs.exists("/tmp/MultiReactOS_multi_installer.lua") then
