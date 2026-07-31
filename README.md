@@ -1,6 +1,6 @@
 # MultiReactOS
 
---[ here a description (i start to write it after 1 week and some days) ]--
+--[ here a description ]--
 
 --[ Hardware requirements ]--
  - tier 1 ram or more
