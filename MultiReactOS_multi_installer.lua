@@ -712,7 +712,7 @@ end
   elseif (data == script) then
    print("Program succesfully written!")
   else
-   error("File write error: file content not equal with the program")
+   error("File write error: the content of the file is not identical to the the program")
   end
   else
    error("File cannot be opened")
@@ -723,6 +723,8 @@ end
  event.pull("key_down")
 end
  if fs.exists("/tmp/MultiReactOS_multi_installer.lua") then
+   print(" ")
+   print("Cleaning up...") 
    fs.remove("/tmp/MultiReactOS_multi_installer.lua")
  end
  term.clear()
