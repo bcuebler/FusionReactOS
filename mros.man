@@ -2,7 +2,7 @@ NAME
     mros - Multi installer for MultiReactOS
 
 SYNOPSYS
-    mros [parancs] [opciók]
+    mros
 
 DESCRIPTION
     
