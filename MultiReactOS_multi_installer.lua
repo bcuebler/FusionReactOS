@@ -541,6 +541,14 @@ if( program == 3 ) then
  programname = "MROS_Fission_RC"
   print(" ")
   print("This code hasn't been written yet")
+ if ( fs == nil ) then
+  fs = require("filesystem")
+ end
+ if fs.exists("/tmp/MROS_multi_installer.lua") then
+   print(" ")
+   print("Cleaning up...") 
+   fs.remove("/tmp/MultiReactOS_multi_installer.lua")
+ end
   os.exit()
 end
 
@@ -549,6 +557,14 @@ if( program == 4 ) then
  programname = "MROS_Molten_Salt_RC"
   print(" ")
   print("This code hasn't been written yet")
+ if ( fs == nil ) then
+  fs = require("filesystem")
+ end
+ if fs.exists("/tmp/MROS_multi_installer.lua") then
+   print(" ")
+   print("Cleaning up...") 
+   fs.remove("/tmp/MultiReactOS_multi_installer.lua")
+ end
   os.exit()
 end
 
