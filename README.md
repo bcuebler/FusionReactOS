@@ -2,6 +2,8 @@
 
 --[ here a description ]--
 
+The installation help and the documentations are in the HELP.TXT
+
 --[ Hardware requirements ]--
  - tier 1 ram or more
  - tier 1 cpu or higher
