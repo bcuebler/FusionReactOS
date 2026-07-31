@@ -15,6 +15,7 @@ The installation help and the documentations are in the HELP.TXT
 
 --[ To Do list ]--
 - [ ] 6. option: help and info
+- [ ] option editor (for changing the program's settings after it's been written tho the storage media)
 - [x] Geiger counter program no predefinied port mode delete
 - [x] Fusion reactor controller
 - [x] Multi client
@@ -32,6 +33,7 @@ The installation help and the documentations are in the HELP.TXT
 --[ Known bugs (i mark the bug it's fixed) ]--
 - [ ] Geiger counter under 100 urads/t bad reading, or displaying
 - [ ] Multi client start with a "trying to compare with a nil value error" and reboot will fix it
+- [ ] Geiger counter program will eat up the real computer's cpu (probably the delay loop is the problem)
 
 
 
@@ -39,6 +41,7 @@ The installation help and the documentations are in the HELP.TXT
 - [x] Multi client installer
 - [x] Fusion ReactOS installer
 - [x] Geiger counter installer(with some bugs)
+- [ ] help
 
 
 
