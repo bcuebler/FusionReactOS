@@ -547,7 +547,7 @@ if( program == 3 ) then
  if fs.exists("/tmp/MROS_multi_installer.lua") then
    print(" ")
    print("Cleaning up...") 
-   fs.remove("/tmp/MultiReactOS_multi_installer.lua")
+   fs.remove("/tmp/MROS_multi_installer.lua")
  end
   os.exit()
 end
@@ -563,7 +563,7 @@ if( program == 4 ) then
  if fs.exists("/tmp/MROS_multi_installer.lua") then
    print(" ")
    print("Cleaning up...") 
-   fs.remove("/tmp/MultiReactOS_multi_installer.lua")
+   fs.remove("/tmp/MROS_multi_installer.lua")
  end
   os.exit()
 end
@@ -750,6 +750,6 @@ end
  if fs.exists("/tmp/MROS_multi_installer.lua") then
    print(" ")
    print("Cleaning up...") 
-   fs.remove("/tmp/MultiReactOS_multi_installer.lua")
+   fs.remove("/tmp/MROS_multi_installer.lua")
  end
  term.clear()
