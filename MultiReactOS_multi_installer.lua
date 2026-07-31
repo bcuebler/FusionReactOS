@@ -731,7 +731,7 @@ end
  if ( fs == nil ) then
   fs = require("filesystem")
  end
- if fs.exists("/tmp/MultiReactOS_multi_installer.lua") then
+ if fs.exists("/tmp/MROS_multi_installer.lua") then
    print(" ")
    print("Cleaning up...") 
    fs.remove("/tmp/MultiReactOS_multi_installer.lua")
