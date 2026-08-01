@@ -300,7 +300,6 @@ gpu.set(1, 1, "Modem port?")
  port = tonumber(input)
 end
   
-modem.close(tonumber(port))
 modem.open(tonumber(port))
 
 gpu.fill(1, 1, 12, 2, " ")
@@ -311,11 +310,13 @@ while true do
    if( sig == "key_down" ) then
    gpu.setResolution(oldW, oldH)
    gpu.fill(1, 1, oldW, oldH, " ")
+   modem.close(tonumber(port))
    break
   end
  else
   sig, _, _, mport, _, msg = computer.pullSignal()
   if( sig == "key_down" ) and (pport == 0) then
+   modem.close(tonumber(port))
    break
   end
  end
