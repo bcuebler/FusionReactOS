@@ -642,7 +642,6 @@ if(modm == 1) then
 end
 
 while true do
- if(delaly > (dt*10000000)) then
   rad = tostring(geiger.getChunkRadiationLevel()).." Rads/t".."\n"
   ..state
  if(geiger.getChunkRadiationLevel() > warn) and (warn > 0) then
@@ -669,9 +668,7 @@ while true do
      y = y + 1
    end
   end
-  delaly = 0
- end
-delaly = delaly + 1
+
 
   if( inst == 0 ) and (scrn == 1) and (1 == 0) then
    sig, _, _, _ = event.pull(0)
@@ -681,6 +678,7 @@ delaly = delaly + 1
    break
   end
  end
+computer.pullSignal(dt)
 end
 ]======]
 end
