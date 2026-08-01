@@ -33,7 +33,7 @@ The installation help and the documentations are in the HELP.TXT
 --[ Known bugs (i mark the bug it's fixed) ]--
 - [ ] Geiger counter under 100 urads/t bad reading, or displaying
 - [ ] Multi client start with a "trying to compare with a nil value error" and reboot will fix it
-- [ ] Geiger counter program will eat up the real computer's cpu (probably the delay loop is the problem)
+- [x] Geiger counter program will eat up the real computer's cpu (probably the delay loop is the problem)
 
 
 
@@ -48,7 +48,6 @@ The installation help and the documentations are in the HELP.TXT
 --[ testing ]--
 - [x] fission reactor controller
 - [ ] molten salt utilitys controller
-- [x] geiger controller
 - [x] help function
 - [x] server
 
@@ -57,7 +56,6 @@ The installation help and the documentations are in the HELP.TXT
 --[ dev ]--
 - [x] fission reactor controller
 - [ ] molten salt utilitys controller
-- [x] geiger controller
 - [ ] help function
 - [ ] server
 
