@@ -37,7 +37,7 @@ The installation help and the documentations are in the HELP.TXT
 
 
 
-# Functions
+# Working Functions
 - [x] Multi client installer
 - [x] Fusion ReactOS installer
 - [x] Geiger counter installer(with some bugs)
@@ -45,7 +45,7 @@ The installation help and the documentations are in the HELP.TXT
 
 
 
-# testing
+# In testing
 - [x] fission reactor controller
 - [ ] molten salt utilitys controller
 - [x] help function
@@ -53,7 +53,7 @@ The installation help and the documentations are in the HELP.TXT
 
 
 
-# dev 
+# In development
 - [x] fission reactor controller
 - [ ] molten salt utilitys controller
 - [ ] help function
