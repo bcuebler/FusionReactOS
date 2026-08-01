@@ -1,9 +1,13 @@
+local in1 = 528
+local in2 = 529
+local out = 527
+
 local e = computer
 local m = component.proxy(component.list("modem")())
 
-m.open(528)
-m.open(529)
-m.open(527)
+m.open(in1)
+m.open(in2)
+m.open(out)
 
 msg1 = "1".."\n".."1".."\n"
 msg2 = "1".."\n".."1".."\n"
@@ -39,25 +43,28 @@ end
 
 
 while true do
-  local _, _, _, port, _, data = e.pullSignal(1)
-  if port == 528 then msg2 = tostring(data) end
-  if port == 529 then msg1 = tostring(data) end
+  local ev, _, _, port, _, data = e.pullSignal()
+  if ev == "modem_message" and (port == in1 or port == in2) then
+    if port == in1 then msg2 = tostring(data) end
+    if port == in2 then msg1 = tostring(data) end
 
-m11, m12 = getFirstTwoNumbers(msg1)
-m21, m22 = getFirstTwoNumbers(msg2)
+    m11, m12 = getFirstTwoNumbers(msg1)
+    m21, m22 = getFirstTwoNumbers(msg2)
 
-if m11 > m21 then
- line1 = m11
-else
- line1 = m21
+    if m11 > m21 then
+     line1 = m11
+    else
+     line1 = m21
+    end
+
+    line2 = m12 + m22
+
+    _, _, rest1 = splitMessage(msg1)
+    _, _, rest2 = splitMessage(msg2)
+
+    combined = line1.."\n"..line2.."\n"..  rest1 .. "\n" .. rest2
+
+    m.broadcast(out, combined)
+  end
 end
 
-line2 = m12 + m22
-
-_, _, rest1 = splitMessage(msg1)
-_, _, rest2 = splitMessage(msg2)
-
-combined = line1.."\n"..line2.."\n"..  rest1 .. "\n" .. rest2
-
-  m.broadcast(527, combined)
-end
