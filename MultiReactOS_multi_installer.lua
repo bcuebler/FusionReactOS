@@ -628,7 +628,6 @@ invoke = component.invoke
  if(modm == 1) then
   modem = component.proxy(component.list("modem")())
  end
-delaly = 0
 
 state = "starting..."
   
