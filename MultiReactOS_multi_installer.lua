@@ -315,6 +315,7 @@ while true do
  else
   sig, _, _, mport, _, msg = computer.pullSignal()
   if( sig == "key_down" ) and (pport == 0) then
+   modem.close(tonumber(port))
    break
   end
  end
