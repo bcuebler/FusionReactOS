@@ -4,7 +4,7 @@
 
 The installation help and the documentations are in the HELP.TXT
 
---[ Hardware requirements ]--
+# Hardware requirements
  - tier 1 ram or more
  - tier 1 cpu or higher
  - tier 1 gpu  or higher (program-dependent)
@@ -13,7 +13,7 @@ The installation help and the documentations are in the HELP.TXT
  - external or internal redstone i/o (card or block) tier 1 or higher (program-dependent)
  - reactor or geiger counter block from nuclear craft (except if you install the client program)
 
---[ To Do list ]--
+# To Do list
 - [ ] 6. option: help and info
 - [ ] option editor (for changing the program's settings after it's been written tho the storage media)
 - [x] Geiger counter program no predefinied port mode delete
@@ -30,14 +30,14 @@ The installation help and the documentations are in the HELP.TXT
 
 
 
---[ Known bugs (i mark the bug it's fixed) ]--
+# Known bugs (i mark the bug it's fixed)
 - [ ] Geiger counter under 100 urads/t bad reading, or displaying
 - [ ] Multi client start with a "trying to compare with a nil value error" and reboot will fix it
 - [x] Geiger counter program will eat up the real computer's cpu (probably the delay loop is the problem)
 
 
 
---[ Functions ]--
+# Functions
 - [x] Multi client installer
 - [x] Fusion ReactOS installer
 - [x] Geiger counter installer(with some bugs)
@@ -45,7 +45,7 @@ The installation help and the documentations are in the HELP.TXT
 
 
 
---[ testing ]--
+# testing
 - [x] fission reactor controller
 - [ ] molten salt utilitys controller
 - [x] help function
@@ -53,13 +53,14 @@ The installation help and the documentations are in the HELP.TXT
 
 
 
---[ dev ]--
+# dev 
 - [x] fission reactor controller
 - [ ] molten salt utilitys controller
 - [ ] help function
 - [ ] server
 
 
+# Links/releases
 
 Here is the link for the Reactor controller server installer (old version, i will not update this):
 ```
