@@ -322,8 +322,8 @@ while true do
  end
  
   if ( sig == "modem_message" ) and (mport == port) then
- 
- texts = msg
+   texts = tostring(msg or "")
+-- texts = msg
 liness = {}
 for lins in texts:gmatch("[^\n]+") do
   table.insert(liness, lins)
