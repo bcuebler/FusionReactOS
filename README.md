@@ -27,6 +27,7 @@ The installation help and the documentations are in the HELP.TXT
 - [ ] adding server to installer
 - [ ] adding radiation scrubber
 - [ ] Make a more nicer README
+- [ ] Geiger counter station name
 
 
 
@@ -56,8 +57,8 @@ The installation help and the documentations are in the HELP.TXT
 # In development
 - [x] fission reactor controller
 - [ ] molten salt utilitys controller
-- [ ] help function
-- [ ] server
+- [x] help function
+- [x] server
 
 
 # Links/releases
