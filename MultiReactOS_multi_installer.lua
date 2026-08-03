@@ -14,6 +14,16 @@ function chart()
  print(" ")
 end
 
+function cleanup()
+ if ( fs == nil ) then
+   fs = require("filesystem")
+ end
+ if fs.exists("/tmp/MROS_multi_installer.lua") then
+   print("Cleaning up...") 
+   fs.remove("/tmp/MROS_multi_installer.lua")
+ end 
+end
+
  computer.beep()
  term.clear()
  dt = 0
@@ -556,14 +566,7 @@ if( program == 3 ) then
  end
   print(" ")
   print("This code hasn't been written yet")
- if ( fs == nil ) then
-  fs = require("filesystem")
- end
- if fs.exists("/tmp/MROS_multi_installer.lua") then
-   print(" ")
-   print("Cleaning up...") 
-   fs.remove("/tmp/MROS_multi_installer.lua")
- end
+  cleanup()
   os.exit()
 end
 
@@ -576,14 +579,7 @@ if( program == 4 ) then
  end
   print(" ")
   print("This code hasn't been written yet")
- if ( fs == nil ) then
-  fs = require("filesystem")
- end
- if fs.exists("/tmp/MROS_multi_installer.lua") then
-   print(" ")
-   print("Cleaning up...") 
-   fs.remove("/tmp/MROS_multi_installer.lua")
- end
+  cleanup()
   os.exit()
 end
 
@@ -700,13 +696,9 @@ end
   print("Overwrite? [Y/n]")
   ow = string.lower(tostring(io.read()))
   if (ow == "n") then
-   if ( fs == nil ) then
-    fs = require("filesystem")
-   end
-   if fs.exists("/tmp/MROS_multi_installer.lua") then
-    fs.remove("/tmp/MROS_multi_installer.lua")
-   end
-   error("Overwrite aborted by user, file not written")
+    print("Overwrite aborted by user, file not written")
+    cleanup()
+    os.exit()
   else
    print("Overwriting")
   end
@@ -716,13 +708,9 @@ end
   if ( wrp == 1 ) then
    wp = eeprom.makeReadonly(eeprom.getChecksum())
    if (wp ~= true) then
-   if ( fs == nil ) then
-    fs = require("filesystem")
-   end
-   if fs.exists("/tmp/MROS_multi_installer.lua") then
-    fs.remove("/tmp/MROS_multi_installer.lua")
-   end
-    error("Setting EEPROM as readonly: failed")
+    print("Setting EEPROM as readonly: failed")
+    cleanup()
+    os.exit()
    else
     print("Setting EEPROM as readonly: done")
    end
@@ -731,24 +719,16 @@ end
   if (content == script) then
    print("EEPROM succesfully written!")
   else
-   if ( fs == nil ) then
-    fs = require("filesystem")
-   end
-   if fs.exists("/tmp/MROS_multi_installer.lua") then
-    fs.remove("/tmp/MROS_multi_installer.lua")
-   end
-   error("Error writing "..programname..". The EEPROM is readonly or not present")
+   print("Error writing "..programname..". The EEPROM is readonly or not present")
+   cleanup()
+   os.exit()
   end
  else
    fs = require("filesystem")
    if require("filesystem").get(path).isReadOnly() then
-   if ( fs == nil ) then
-    fs = require("filesystem")
-   end
-   if fs.exists("/tmp/MROS_multi_installer.lua") then
-    fs.remove("/tmp/MROS_multi_installer.lua")
-   end
-    error(path.." is readonly")
+    print(path.." is readonly")
+    cleanup()
+    os.exit()
    end
    path = path .. "/" .. programname .. ".lua"
    if fs.exists(path) then
@@ -757,13 +737,9 @@ end
     print("Overwrite? [Y/n]")
     ow = string.lower(tostring(io.read()))
     if (ow == "n") then
-   if ( fs == nil ) then
-    fs = require("filesystem")
-   end
-   if fs.exists("/tmp/MROS_multi_installer.lua") then
-    fs.remove("/tmp/MROS_multi_installer.lua")
-   end
-     error("Overwrite aborted by user, file not written")
+     print("Overwrite aborted by user, file not written")
+     cleanup()
+     os.exit()
    else
     print("Overwriting "..programname)
    end
@@ -777,53 +753,30 @@ end
    data = file:read("*a")
    file:close()
    else
-   if ( fs == nil ) then
-    fs = require("filesystem")
-   end
-   if fs.exists("/tmp/MROS_multi_installer.lua") then
-    fs.remove("/tmp/MROS_multi_installer.lua")
-   end
-    error("File cannot be opened")
+    print("File cannot be opened")
+    cleanup()
+    os.exit()
    end
   if (fs.exists(path) == false) then
-   if ( fs == nil ) then
-    fs = require("filesystem")
-   end
-   if fs.exists("/tmp/MROS_multi_installer.lua") then
-    fs.remove("/tmp/MROS_multi_installer.lua")
-   end 
-   error("File write error: file not exists")
+   print("File write error: file not exists")
+   cleanup()
+   os.exit()
   elseif (data == script) then
    print("Program succesfully written!")
   else
-   if ( fs == nil ) then
-    fs = require("filesystem")
-   end
-   if fs.exists("/tmp/MROS_multi_installer.lua") then
-    fs.remove("/tmp/MROS_multi_installer.lua")
-   end 
-   error("File write error: the content of the file is not identical to the the program")
+   print("File write error: the content of the file is not identical to the the program")
+   cleanup()
+   os.exit()
   end
   else
-   if ( fs == nil ) then
-    fs = require("filesystem")
-   end
-   if fs.exists("/tmp/MROS_multi_installer.lua") then
-    fs.remove("/tmp/MROS_multi_installer.lua")
-   end
-   error("File cannot be opened")
+   print("File cannot be opened")
+   cleanup()
+   os.exit()
   end
  end
  print(" ")
  print("Press any key to exit")
  event.pull("key_down")
 end
- if ( fs == nil ) then
-  fs = require("filesystem")
- end
- if fs.exists("/tmp/MROS_multi_installer.lua") then
-   print(" ")
-   print("Cleaning up...") 
-   fs.remove("/tmp/MROS_multi_installer.lua")
- end
+ cleanup()
  term.clear()
