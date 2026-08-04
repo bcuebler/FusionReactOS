@@ -2,7 +2,7 @@
 
 --[ here a description ]--
 
-The installation help and the documentations are in the HELP.TXT
+The installation help, debugging and the documentations are in the HELP.TXT
 
 # Hardware requirements
  - tier 1 ram or more
