@@ -8,4 +8,4 @@ DESCRIPTION
     
     
 AUTHOR
-    bcuebler (https://github.com/bcuebler/FusionReactOS/tree/main)
+    bcuebler (https://github.com/NillTheNovabeast/FusionReactOS/tree/main)
