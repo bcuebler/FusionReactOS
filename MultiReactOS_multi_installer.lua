@@ -70,8 +70,8 @@ term.clear()
     wrp = 0
    end
  else
-  print("Installation path? E.g.: /home")
-  path = tostring(io.read())
+  print("Installation path? E.g.: /usr/bin")
+  path = tostring(io.read()) or "/usr/bin"
   term.clear()
   print("MultiReactOS Setup V1.0")
  end
