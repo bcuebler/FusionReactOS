@@ -37,10 +37,11 @@ end
  print("3. Fission Reactor controller")
  print("4. Molten Salt Reactor controller")
  print("5. Geiger Counter reader")
- print("6. Help / info")
- print("7. Exit")
+ print("6. Make program autorun")
+ print("7. Help / info")
+ print("8. Exit")
  program = tonumber(io.read())
-if(program == 6) then
+if(program == 7) then
  term.clear()
  print("- help/info text here -")
  event.pull("key_down")
@@ -684,7 +685,13 @@ end
 ]======]
 end
 
-
+if( program == 6 ) then
+  print(" ")
+  print("This code hasn't been written yet")
+  cleanup()
+  os.exit()
+end
+ 
  term.clear()
  print("MultiReactOS Setup V1.0")
  print(" ")
