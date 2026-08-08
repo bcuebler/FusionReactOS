@@ -46,6 +46,11 @@ if(program == 7) then
  print("- help/info text here -")
  event.pull("key_down")
 end
+if( program == 6 ) then
+  print(" ")
+  print("This code hasn't been written yet")
+  event.pull("key_down")
+end
 if(program < 6) then
 term.clear()
  print("MultiReactOS Setup V1.0")
@@ -683,13 +688,6 @@ while true do
 computer.pullSignal(dt)
 end
 ]======]
-end
-
-if( program == 6 ) then
-  print(" ")
-  print("This code hasn't been written yet")
-  cleanup()
-  os.exit()
 end
  
  term.clear()
